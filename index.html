@@ -192,7 +192,9 @@ img{display:block;max-width:100%;height:auto}
 .star svg{width:100%;height:auto;display:block;animation:spin 14s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .trail{position:absolute;inset:0;z-index:4;pointer-events:none}
-.ig-trail{z-index:8}
+.ig-trail{z-index:1}
+.insta .sel-head{position:relative;z-index:6}
+.ig-wrap .spark{z-index:2}
 .trail-img.sm{width:clamp(120px,11vw,170px);padding:8px 8px 22px}
 .trail-img.sm::before{height:12px;top:-6px}
 .trail-img{position:absolute;left:0;top:0;width:clamp(170px,17vw,270px);background:var(--white);padding:clamp(10px,1vw,16px) clamp(10px,1vw,16px) clamp(32px,3vw,50px);box-shadow:6px 8px 0 rgba(24,35,41,.12),0 14px 30px rgba(24,35,41,.12);will-change:transform,opacity}
@@ -438,14 +440,16 @@ img{display:block;max-width:100%;height:auto}
 .proc-card h5{font:800 clamp(13px,1.1vw,15px) var(--font-head);letter-spacing:.02em;margin:0 0 14px;padding-bottom:8px;position:relative;width:fit-content}
 .proc-card h5::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--cyan);transform-origin:left;transform:scaleX(var(--p,1));transition:transform .8s var(--ease)}
 .quad{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
-.quad img{width:100%;aspect-ratio:1/1.1;object-fit:cover;transition:transform .5s var(--ease)}
+.quad img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--white);transition:transform .5s var(--ease)}
+.quad.sq img{aspect-ratio:1/1}
 .quad img:hover{transform:scale(1.04)}
 .out-box{background:#DDE3E6;border:1.5px solid var(--line);border-radius:8px;padding:clamp(16px,2vw,28px)}
 .out-box h4{font:800 clamp(15px,1.4vw,20px) var(--font-head);margin:0 0 clamp(16px,2vw,26px);letter-spacing:.01em}
 .out-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.4vw,20px)}
 .out-item .ph{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--white)}
-.out-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.out-item.web img{object-fit:contain}
+.out-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .6s var(--ease)}
+.out-item.web .ph{padding:8px 0}
+.out-item.web img{inset:8px 0;height:calc(100% - 16px)}
 .out-item:hover img{transform:scale(1.05)}
 .out-item b{display:block;font:800 13px var(--font-head);margin:14px 0 8px;letter-spacing:.02em}
 .out-item p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.6}
@@ -731,6 +735,7 @@ img{display:block;max-width:100%;height:auto}
 
   <!-- INSTAGRAM -->
   <section class="insta" id="insta">
+    <div class="trail ig-trail" id="igTrail" aria-hidden="true"></div>
     <div class="ht" style="left:0;top:0;width:30%;height:60%;--s:52px;--o:.25"></div>
     <div class="wrap">
       <div class="sel-head">
@@ -741,7 +746,6 @@ img{display:block;max-width:100%;height:auto}
         </div>
       </div>
       <div class="ig-wrap" id="igWrap">
-        <div class="trail ig-trail" id="igTrail" aria-hidden="true"></div>
         <span class="spark" style="--x:2%;--y:6%;--c:#F6A4C4">★</span>
         <span class="spark" style="--x:72%;--y:0%;--c:#9DBBF2;--s:26px;--d:.6s">★</span>
         <span class="spark" style="--x:97%;--y:20%;--c:#E6C24F;--s:14px;--d:1.1s">★</span>
@@ -1043,12 +1047,14 @@ function makeTrail(o){
     c.innerHTML=`<img src="assets/${o.pool[n]}.webp" alt="">`+(o.caption?`<span># 0${n+1}</span>`:'');
     c.style.zIndex=z++; o.layer.appendChild(c); live.push(c);
     const w=c.offsetWidth,h=c.offsetHeight,rot=Math.random()*14-7, r=o.area.getBoundingClientRect();
-    const x0=Math.min(Math.max(x-w/2,8),r.width-w-8), y0=Math.min(Math.max(y-h/2,8),r.height-h-8);
+    const x0=Math.min(Math.max(x-w/2,8),r.width-w-8), y0=Math.min(Math.max(y-h/2,minTop()),r.height-h-8);
     if (hasGsap) gsap.fromTo(c,{x:x0,y:y0+30,scale:.55,rotation:rot*2.5,opacity:0},{y:y0,scale:1,rotation:rot,opacity:1,duration:.7,ease:'expo.out'});
     else c.style.transform=`translate(${x0}px,${y0}px) rotate(${rot}deg)`;
     setTimeout(()=>dismiss(c),1700);
   };
+  const minTop=()=>{ if(!o.exclude) return 8; const a=o.area.getBoundingClientRect(), e=o.exclude.getBoundingClientRect(); return e.bottom-a.top+16; };
   const move=(cx,cy,step)=>{ const r=o.area.getBoundingClientRect(); const x=cx-r.left,y=cy-r.top;
+    if (o.exclude){ const e=o.exclude.getBoundingClientRect(); if (cy<e.bottom+8){ lastX=null; return; } }
     if (lastX===null){ lastX=x; lastY=y; return; }
     const now=performance.now();
     if (Math.hypot(x-lastX,y-lastY)>step && now-lastT>380){ spawn(x,y); lastX=x; lastY=y; lastT=now; } };
@@ -1060,7 +1066,7 @@ function makeTrail(o){
   o.area.addEventListener('touchend',()=>{ lastX=null; });
 }
 makeTrail({ area:stage, layer:$('#trail'), pool:['hero1','hero2','hero3','hero4'], caption:true, onSpawn:()=>heroEl.classList.add('touched') });
-makeTrail({ area:$('#igWrap'), layer:$('#igTrail'), pool:['ig1','ig2','ig3','ig4','ig5','ig6'], small:true });
+makeTrail({ area:$('#insta'), layer:$('#igTrail'), exclude:$('#insta .sel-head'), pool:['ig1','ig2','ig3','ig4','ig5','ig6'], small:true });
 if (!reduce){
   stage.addEventListener('pointermove', e => {
     if (e.pointerType!=='mouse' || !hasGsap) return;
@@ -1258,11 +1264,11 @@ function projectHTML(p){
     </div>
     <div class="p-sec p-proc">
       <h3>03 / CREATIVE PROCESS</h3>
-      <p class="note">젤팟 초기 시안의 형태를 검토하고 뚜껑 구조와 용기 비율, 로고 배치를 조정했습니다.</p>
+      <p class="note">제품 패키지 초기 시안의 형태를 검토하고 뚜껑 구조와 용기 비율, 로고 배치를 조정했습니다.</p>
       <div class="proc-grid">
         <div class="proc-card"><h5>01 / INITIAL STUDY</h5><div class="quad">
           <img src="assets/init1.webp" alt="초기 시안 향수형 용기"><img src="assets/init2.webp" alt="초기 시안 스틱 용기"><img src="assets/init3.webp" alt="초기 시안 유리 젤팟"><img src="assets/init4.webp" alt="초기 시안 패키지 박스"></div></div>
-        <div class="proc-card"><h5>02 / REVISED DIRECTION</h5><div class="quad">
+        <div class="proc-card"><h5>02 / REVISED DIRECTION</h5><div class="quad sq">
           <img src="assets/rev1.webp" alt="수정 시안 그라데이션 보틀"><img src="assets/rev2.webp" alt="수정 시안 립스틱"><img src="assets/rev3.webp" alt="수정 시안 꽃 모양 젤팟"><img src="assets/rev4.webp" alt="수정 시안 코랄 보틀"></div></div>
       </div>
       <p class="note" style="margin:22px 0 0">Figma와 AI 도구로 제품의 질감과 로고 위치를 반복 확인했습니다. 모델 비주얼은 얼굴 · 헤어 · 의상의 기준을 맞추며 여러 구도로 확장했습니다.</p>
