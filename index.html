@@ -1,0 +1,1354 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GOWOON Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="브랜드의 메시지를 인상적인 콘텐츠로 제작하는 디자이너 정고운의 포트폴리오">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: OS-window collage — retro monitor hero, polaroid & film-strip cards, window-chrome project cards on paper / cyan bands */
+:root{
+  --cyan:#1CDDFF;
+  --cyan-soft:#D6F6FC;
+  --sky:#E3F7F9;
+  --paper:#F6F7F2;
+  --white:#FFFFFF;
+  --ink:#182329;
+  --ink-2:#3A474E;
+  --muted:#6B777D;
+  --line:#C9D1D4;
+  --dot:#9AA6AB;
+  --pink:#F9D3E6;
+  --pink-dot:#F2A8CB;
+  --screen:#262930;
+  --font-display:"Anton","Impact","Arial Narrow",sans-serif;
+  --font-impact:Impact,"Impact Regular","Anton","Haettenschweiler","Arial Narrow Bold",sans-serif;
+  --font-head:"Inter","Noto Sans KR","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Noto Sans KR","Inter","Apple SD Gothic Neo",sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --gutter:max(16px, env(safe-area-inset-left,0px));
+  --gutter-r:max(16px, env(safe-area-inset-right,0px));
+  --pad:clamp(16px,4vw,56px);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:200;background:var(--paper)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.wrap{padding-left:max(var(--pad), env(safe-area-inset-left,0px));padding-right:max(var(--pad), env(safe-area-inset-right,0px))}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.eyebrow{font:700 13px/1.2 var(--font-head);letter-spacing:.06em;text-transform:uppercase}
+.h-xl{font:900 clamp(44px,7.4vw,108px)/.92 var(--font-head);letter-spacing:-.045em;text-wrap:balance;margin:0}
+.h-lg{font:800 clamp(34px,4.4vw,62px)/.98 var(--font-head);letter-spacing:-.035em;margin:0;text-wrap:balance}
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding:.08em .12em .1em;margin:-.08em -.12em -.1em}
+.split .c{display:inline-block;will-change:transform}
+
+/* halftone */
+.ht{position:absolute;pointer-events:none;background-image:radial-gradient(circle,var(--c,var(--dot)) 34%,transparent 37%);background-size:var(--s,22px) var(--s,22px);-webkit-mask-image:radial-gradient(closest-side,#000 25%,transparent);mask-image:radial-gradient(closest-side,#000 25%,transparent);opacity:var(--o,.7)}
+
+/* ---------- loader (site-style window) ---------- */
+.loader{position:fixed;inset:0;z-index:500;background:linear-gradient(180deg,#DDF6FA 0%,#EAF8F8 60%,#E3F7F9 100%);display:grid;place-items:center;padding:16px;overflow:hidden;animation:loaderOut .8s var(--ease) 8s forwards}
+.loader.done{animation:loaderUp .9s var(--ease) .1s forwards}
+@keyframes loaderUp{from{transform:none}to{transform:translateY(-100%);visibility:hidden}}
+@keyframes loaderOut{to{transform:translateY(-100%);visibility:hidden}}
+.loader .ht{z-index:0}
+.ld-logo{position:absolute;left:max(var(--pad),env(safe-area-inset-left,0px));top:calc(env(safe-area-inset-top,0px) + 22px);font:800 clamp(20px,1.9vw,26px)/1 var(--font-head);color:var(--ink)}
+.ld-year{position:absolute;right:max(var(--pad),env(safe-area-inset-right,0px));top:calc(env(safe-area-inset-top,0px) + 26px);font:700 12px var(--font-head);letter-spacing:.12em;color:var(--ink-2)}
+.ld-star{position:absolute;color:var(--cyan);pointer-events:none}
+.ld-star svg{display:block;width:100%;animation:spin 10s linear infinite}
+.ld-wrap{position:relative;z-index:1;width:min(640px,100%);transition:transform .6s var(--ease)}
+.loader.done .ld-wrap{transform:scale(.94) translateY(-20px)}
+.ld-win{background:var(--white);border:2px solid var(--ink);border-radius:16px;box-shadow:10px 10px 0 var(--ink);overflow:hidden}
+.ld-bar{display:flex;align-items:center;gap:10px;padding:12px 18px;background:var(--cyan);border-bottom:2px solid var(--ink);font:800 12px var(--font-head);letter-spacing:.06em;color:var(--ink)}
+.ld-bar .win-dots i{width:12px;height:12px}
+.ld-bar .grow{flex:1}
+.ld-body{display:grid;justify-items:center;text-align:center;gap:clamp(14px,2vw,22px);padding:clamp(32px,5vw,56px) clamp(20px,5vw,52px) clamp(28px,4vw,44px)}
+.ld-eyebrow{font:700 clamp(11px,1vw,13px) var(--font-head);letter-spacing:.18em;color:var(--ink-2)}
+.ld-name{font:900 clamp(40px,7vw,72px)/.92 var(--font-head);letter-spacing:-.045em;color:var(--ink)}
+.ld-name span{color:var(--cyan)}
+.ld-text{font:600 clamp(14px,1.4vw,17px) var(--font-head);color:var(--ink-2)}
+.ld-text .dot{animation:dotp 1.2s steps(1) infinite}
+.ld-text .dot:nth-child(2){animation-delay:.2s}.ld-text .dot:nth-child(3){animation-delay:.4s}
+@keyframes dotp{0%,100%{opacity:1}50%{opacity:.15}}
+.ld-track{width:100%;height:22px;border:2px solid var(--ink);border-radius:99px;background:var(--sky);overflow:hidden;margin-top:6px}
+.ld-track i{display:block;height:100%;width:0;background:repeating-linear-gradient(-45deg,var(--cyan) 0 12px,#5EE8FF 12px 24px);border-right:2px solid var(--ink);animation:stripe .8s linear infinite}
+@keyframes stripe{to{background-position:34px 0}}
+.ld-meta{width:100%;display:flex;justify-content:space-between;font:700 12px var(--font-head);letter-spacing:.1em;color:var(--ink-2);font-variant-numeric:tabular-nums}
+
+/* ---------- cursor ---------- */
+.cursor{position:fixed;left:0;top:0;z-index:600;pointer-events:none;display:none;will-change:transform}
+.cursor svg{width:34px;height:auto;filter:drop-shadow(2px 3px 0 rgba(24,35,41,.18));transition:transform .25s var(--ease);transform-origin:4px 4px}
+.cursor.down svg{transform:scale(.82)}
+.cursor-label{position:absolute;left:30px;top:28px;background:var(--ink);color:var(--white);font:700 11px var(--font-head);letter-spacing:.08em;padding:6px 10px;border-radius:99px;white-space:nowrap;transform:scale(0);transform-origin:0 0;transition:transform .3s var(--ease)}
+.cursor.has-label .cursor-label{transform:scale(1)}
+@media (hover:hover) and (pointer:fine){
+  .cursor{display:block}
+  body.custom-cursor, body.custom-cursor a, body.custom-cursor button{cursor:none}
+}
+
+/* ---------- header ---------- */
+.header{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:300;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;transition:background .35s,box-shadow .35s,transform .45s var(--ease)}
+.header.away{transform:translateY(calc(-100% - 20px - env(safe-area-inset-top,0px)))}
+.header.solid{background:rgba(246,247,242,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(24,35,41,.08)}
+.header.on-cyan.solid{background:rgba(255,255,255,.92)}
+.logo{font:800 clamp(20px,1.9vw,26px)/1 var(--font-head);letter-spacing:.01em;display:inline-flex}
+.logo span{display:inline-block;transition:transform .4s var(--ease)}
+.logo:hover span{transform:translateY(-3px) rotate(-4deg)}
+.logo:hover span:nth-child(2n){transform:translateY(2px) rotate(4deg)}
+.nav{display:flex;align-items:center;gap:clamp(32px,9vw,140px)}
+.nav-link{font:700 15px var(--font-head);letter-spacing:.04em;position:relative;padding:6px 2px}
+.nav-link .br{display:inline-block;transition:transform .35s var(--ease)}
+.nav-link:hover .br:first-child{transform:translateX(-6px)}
+.nav-link:hover .br:last-child{transform:translateX(6px)}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:99px;font:700 14px/1 var(--font-head);letter-spacing:.04em;text-transform:uppercase;padding:15px 26px;transition:transform .35s var(--ease),background .25s,color .25s,box-shadow .3s}
+.pill-cyan{background:var(--cyan);color:var(--ink)}
+.pill-cyan:hover{background:var(--ink);color:var(--cyan);transform:translateY(-2px)}
+.pill-line{border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);text-transform:none}
+.pill-line:hover{background:var(--ink);color:var(--paper)}
+.pill-dark{background:var(--ink);color:var(--white)}
+.pill .arr{display:inline-block;transition:transform .35s var(--ease)}
+.pill:hover .arr{transform:translate(3px,-3px)}
+.burger{display:none;width:52px;height:52px;border-radius:50%;background:var(--cyan);position:relative;flex:none}
+.burger i{position:absolute;left:15px;right:15px;height:2.5px;background:var(--ink);border-radius:3px;transition:transform .45s var(--ease),opacity .25s,top .45s var(--ease)}
+.burger i:nth-child(1){top:18px}.burger i:nth-child(2){top:25px}.burger i:nth-child(3){top:32px}
+.menu-open .burger i:nth-child(1){top:25px;transform:rotate(45deg)}
+.menu-open .burger i:nth-child(2){opacity:0;transform:scaleX(0)}
+.menu-open .burger i:nth-child(3){top:25px;transform:rotate(-45deg)}
+
+
+/* left dock (shown after scrolling past hero) */
+.dock{position:fixed;z-index:295;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));width:190px;background:var(--white);border:2px solid var(--ink);border-radius:14px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;transform-origin:100% 100%;transform:translateX(30px) scale(.6);opacity:0;visibility:hidden;transition:transform .6s var(--ease),opacity .35s,visibility 0s .6s}
+.dock.show{transform:none;opacity:1;visibility:visible;transition:transform .6s var(--ease),opacity .35s}
+.dock .win-bar{padding:9px 12px;font-size:12px;gap:8px}
+.dock .win-dots i{width:9px;height:9px}
+.dock-min{width:22px;height:22px;display:grid;place-items:center;border-radius:6px;font:800 14px/1 var(--font-head);transition:background .2s}
+.dock-min:hover{background:var(--white)}
+.dock-links{display:grid;padding:6px;transition:grid-template-rows .4s var(--ease)}
+.dock-links a,.dock-links button{display:flex;justify-content:space-between;align-items:center;padding:10px 10px;border-radius:9px;font:800 15px var(--font-head);letter-spacing:.02em;text-align:left;transition:background .2s,padding .3s var(--ease)}
+.dock-links a:hover,.dock-links button:hover{background:var(--cyan);padding-left:14px}
+.dock-links .cta{background:var(--ink);color:var(--white);margin-top:4px}
+.dock-links .cta:hover{background:var(--cyan);color:var(--ink)}
+.dock.min .dock-links{display:none}
+.dock-burger{display:none}
+.menu.from-dock .menu-win{top:auto;left:auto;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 86px);transform-origin:calc(100% - 40px) calc(100% + 40px)}
+@media (max-width:1024px){
+  .dock{width:auto;border-radius:99px;box-shadow:4px 4px 0 var(--ink);background:var(--cyan)}
+  .dock .win-bar,.dock-links{display:none}
+  .dock-burger{display:flex;align-items:center;gap:10px;padding:12px 20px 12px 16px;font:800 13px var(--font-head);letter-spacing:.08em}
+  .dock-burger .bars{position:relative;width:20px;height:14px}
+  .dock-burger .bars i{position:absolute;left:0;right:0;height:2.5px;background:var(--ink);border-radius:2px;transition:transform .4s var(--ease),opacity .2s,top .4s var(--ease)}
+  .dock-burger .bars i:nth-child(1){top:0}.dock-burger .bars i:nth-child(2){top:6px}.dock-burger .bars i:nth-child(3){top:12px}
+  .menu-open .dock-burger .bars i:nth-child(1){top:6px;transform:rotate(45deg)}
+  .menu-open .dock-burger .bars i:nth-child(2){opacity:0}
+  .menu-open .dock-burger .bars i:nth-child(3){top:6px;transform:rotate(-45deg)}
+}
+
+/* ---------- mobile menu popup ---------- */
+.menu{position:fixed;inset:0;z-index:290;pointer-events:none}
+.menu-backdrop{position:absolute;inset:0;background:rgba(24,35,41,.42);opacity:0;transition:opacity .45s}
+.menu-win{position:absolute;top:calc(env(safe-area-inset-top,0px) + 84px);right:max(16px,env(safe-area-inset-right,0px));width:min(440px,calc(100% - 32px));background:var(--white);border:2px solid var(--ink);border-radius:18px;box-shadow:10px 10px 0 var(--ink);overflow:hidden;transform-origin:calc(100% - 26px) -30px;transform:scale(.2) rotate(6deg);opacity:0;transition:transform .55s var(--ease),opacity .3s}
+.menu.open{pointer-events:auto}
+.menu.open .menu-backdrop{opacity:1}
+.menu.open .menu-win{transform:none;opacity:1}
+.win-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--cyan);border-bottom:2px solid var(--ink);font:800 12px var(--font-head);letter-spacing:.06em}
+.win-dots{display:flex;gap:7px}.win-dots i{width:11px;height:11px;border:1.5px solid var(--ink);border-radius:50%}
+.win-bar .grow{flex:1}
+.menu-links{list-style:none;margin:0;padding:10px 20px 6px}
+.menu-links li{border-bottom:1.5px dashed var(--line);overflow:hidden}
+.menu-links a{display:flex;align-items:baseline;gap:14px;padding:16px 4px;font:900 clamp(40px,11vw,56px)/1 var(--font-head);letter-spacing:-.04em;transform:translateY(105%);transition:transform .6s var(--ease),color .2s}
+.menu.open .menu-links a{transform:none}
+.menu.open .menu-links li:nth-child(2) a{transition-delay:.06s}
+.menu.open .menu-links li:nth-child(3) a{transition-delay:.12s}
+.menu-links small{font:700 12px var(--font-head);letter-spacing:.08em;color:var(--muted)}
+.menu-links .go{margin-left:auto;font-size:.5em;transition:transform .35s var(--ease)}
+.menu-links a:hover{color:#0aa7c4}
+.menu-links a:hover .go{transform:translate(4px,-4px)}
+.menu-foot{display:flex;flex-wrap:wrap;gap:8px;padding:16px 20px 22px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--ink);border-radius:99px;padding:8px 13px;font:700 12px var(--font-head);letter-spacing:.04em;background:var(--white);transition:background .2s}
+.chip:hover{background:var(--cyan)}
+.menu-mail{width:100%;font:500 14px var(--font-head);color:var(--ink-2);margin-top:6px;user-select:all}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#DDF6FA 0%,#EAF8F8 55%,#E6F6FA 100%)}
+.hero-stage{position:relative;width:100%;aspect-ratio:1440/1080;max-height:none}
+.deco{position:absolute;pointer-events:none;width:var(--w);left:var(--x);top:var(--y);opacity:var(--o,.3)}
+.deco svg{display:block;width:100%;height:auto;fill:var(--cyan);animation:spin var(--sp,60s) linear infinite}
+.d1{--x:14%;--y:28%;--w:38%;--o:.28;--sp:90s}
+.d2{--x:58%;--y:38%;--w:44%;--o:.34;--sp:120s}
+.d3{--x:-8%;--y:62%;--w:26%;--o:.22;--sp:70s}
+.wooni{position:absolute;left:0;right:0;top:9.5%;text-align:center;font:400 calc(27vw * var(--wk,1))/0.9 var(--font-impact);color:#E6F7F9;-webkit-text-stroke:3px #A3ADB2;paint-order:stroke fill;letter-spacing:-.05em;pointer-events:none;user-select:none;white-space:nowrap;margin:0}
+.wooni span{display:inline-block;letter-spacing:-.05em}
+.star{position:absolute;width:var(--w);left:var(--x);top:var(--y);color:var(--cyan);pointer-events:none}
+.star svg{width:100%;height:auto;display:block;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.trail{position:absolute;inset:0;z-index:4;pointer-events:none}
+.ig-trail{z-index:8}
+.trail-img.sm{width:clamp(120px,11vw,170px);padding:8px 8px 22px}
+.trail-img.sm::before{height:12px;top:-6px}
+.trail-img{position:absolute;left:0;top:0;width:clamp(170px,17vw,270px);background:var(--white);padding:clamp(10px,1vw,16px) clamp(10px,1vw,16px) clamp(32px,3vw,50px);box-shadow:6px 8px 0 rgba(24,35,41,.12),0 14px 30px rgba(24,35,41,.12);will-change:transform,opacity}
+.trail-img::before{content:"";position:absolute;left:31%;top:-9px;width:38%;height:18px;background:var(--cyan);opacity:.9;transform:rotate(-2deg)}
+.trail-img img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.trail-img span{position:absolute;right:9%;bottom:6%;font:400 clamp(11px,1vw,15px) var(--font-head);color:var(--muted)}
+.monitor{position:absolute;left:26.5%;bottom:0;width:47%;z-index:5;container-type:inline-size}
+.monitor>img{width:100%;height:auto;user-select:none;-webkit-user-drag:none;filter:drop-shadow(0 22px 24px rgba(24,35,41,.18))}
+.screen{position:absolute;left:12.4%;top:11.2%;width:76%;height:58.8%;border-radius:5% / 7%;background:radial-gradient(120% 90% at 50% 40%,#30343c 0%,#22252b 70%,#1a1c21 100%);overflow:hidden;display:flex;flex-direction:column;box-shadow:inset 0 0 6cqw rgba(0,0,0,.55)}
+.screen::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px);pointer-events:none;animation:flick 4s steps(2) infinite}
+@keyframes flick{50%{opacity:.7}}
+.scr-bar{margin:2.4cqw 2.4cqw 0;height:5.4cqw;border-radius:.8cqw;background:var(--cyan);display:flex;align-items:center;justify-content:space-between;padding:0 2.2cqw;font:800 1.95cqw var(--font-head);color:var(--ink);letter-spacing:.02em}
+.scr-bar b{font-weight:700;letter-spacing:.3em}
+.scr-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4cqw;text-align:center}
+.scr-hello{font:800 3cqw var(--font-head);color:var(--cyan);letter-spacing:.01em}
+.scr-name{font:800 10cqw/1 var(--font-head);color:var(--white);letter-spacing:-.01em;min-height:1em;display:flex;align-items:center}
+.caret{display:inline-block;width:.08em;height:.82em;background:var(--cyan);margin-left:.06em;animation:blink .9s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.scr-sub{font:700 3.1cqw var(--font-head);color:var(--white)}
+.scr-btn{margin-top:1.6cqw;background:var(--cyan);color:var(--ink);font:700 2.7cqw var(--font-head);padding:1.6cqw 5.2cqw;border-radius:99px;transition:transform .3s var(--ease),background .25s}
+.scr-btn:hover{transform:scale(1.06);background:var(--white)}
+.scr-foot{margin:0 2.4cqw 2.4cqw;height:4.3cqw;border-radius:.5cqw;background:var(--paper);display:flex;align-items:center;padding:0 2.4cqw;font:500 1.9cqw var(--font-head);color:var(--ink-2)}
+.scr-cursor{position:absolute;right:15%;bottom:18%;width:6.5cqw;display:none;animation:bob 2.4s var(--ease) infinite}
+@keyframes bob{50%{transform:translate(-14%,-18%)}}
+@media (hover:none){.scr-cursor{display:block}}
+
+/* marquee */
+.marquee{background:var(--paper);overflow:hidden;border-block:0;padding-block:clamp(16px,2vw,26px)}
+.marquee-track{display:flex;width:max-content;will-change:transform}
+.marquee-group{display:flex;align-items:center;flex:none}
+.marquee-item{font:600 clamp(18px,1.8vw,26px)/1 var(--font-head);color:var(--ink-2);white-space:nowrap;padding-inline:clamp(16px,2vw,30px);display:flex;align-items:center;gap:clamp(16px,2vw,30px)}
+.marquee-item::after{content:"✦";color:var(--cyan);font-size:.8em}
+
+/* ---------- ABOUT ---------- */
+.about{position:relative;overflow:hidden;padding-block:clamp(60px,8vw,120px)}
+.about-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;position:relative}
+.about-art{perspective:1000px}
+.about-art img{width:100%;max-width:760px;transform-style:preserve-3d;transition:transform .2s linear;animation:floaty 6s ease-in-out infinite}
+@keyframes floaty{50%{translate:0 -10px}}
+.about-copy{min-width:0;max-width:620px}
+.about-copy .eyebrow{margin-bottom:22px}
+.about-copy .h-lg{margin-bottom:28px}
+.about-copy p{margin:0 0 18px;font-size:clamp(15px,1.25vw,18px);color:var(--ink-2);line-height:1.75}
+.about-copy .lead{color:var(--ink);font-weight:500}
+.stats{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:30px;padding-top:24px;border-top:1.5px solid var(--line)}
+.stat b{display:block;font:900 clamp(26px,2.6vw,38px)/1 var(--font-head);letter-spacing:-.03em}
+.stat span{font-size:13px;color:var(--muted)}
+
+.about-more{position:relative;margin-top:clamp(64px,7vw,120px);display:grid;gap:clamp(56px,6vw,96px)}
+.career{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,4vw,72px);align-items:start}
+.career-col{min-width:0}
+.career-col .eyebrow{margin:0;padding-bottom:14px;border-bottom:2px solid var(--ink);font-size:14px}
+.c-item{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:20px 0;border-bottom:1.5px solid var(--line)}
+.c-item>div{min-width:0}
+.c-item b{display:block;font:700 clamp(16px,1.35vw,19px)/1.45 var(--font-body)}
+.c-item span{display:block;margin-top:5px;font-size:clamp(13px,1.05vw,15px);line-height:1.6;color:var(--muted)}
+.c-item time{flex:none;font:600 13px var(--font-head);font-variant-numeric:tabular-nums;color:var(--ink-2);white-space:nowrap}
+.what-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:clamp(20px,2.4vw,32px)}
+.what-head .eyebrow{order:2;color:var(--muted)}
+.skills{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.skills li{position:relative;display:grid;grid-template-columns:clamp(56px,6vw,96px) minmax(0,1fr) minmax(0,1.5fr);gap:clamp(12px,2vw,32px);align-items:center;padding:clamp(18px,2vw,28px) clamp(8px,1vw,16px);border-bottom:1.5px solid var(--line)}
+.skills li>*{position:relative;min-width:0}
+.sk-num{font:900 clamp(26px,2.6vw,40px)/1 var(--font-head);letter-spacing:-.03em;color:var(--cyan);transition:color .3s}
+.sk-title{margin:0;font:700 clamp(17px,1.6vw,23px)/1.4 var(--font-body);transition:transform .5s var(--ease)}
+.sk-desc{margin:0;font-size:clamp(14px,1.15vw,16px);line-height:1.75;color:var(--ink-2)}
+
+/* ---------- SELECTED ---------- */
+.selected{position:relative;background:var(--cyan);overflow:hidden;padding-block:clamp(56px,6vw,90px) clamp(70px,8vw,120px)}
+.sel-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;padding-bottom:clamp(24px,3vw,40px);border-bottom:3px solid #4E6670;position:relative;z-index:1}
+.sel-intro{text-align:right;max-width:440px}
+.sel-intro p{margin:0;font:700 clamp(17px,1.6vw,24px)/1.4 var(--font-body);color:var(--ink)}
+.sel-intro span{display:block;margin-top:8px;font-size:clamp(13px,1.05vw,15px);color:var(--ink-2);line-height:1.6}
+.sel-stage{position:relative;margin-top:clamp(30px,4vw,60px);height:calc(42vw + 60px)}
+.scard{position:absolute;left:var(--x);top:var(--y);width:var(--w);display:block;transform:rotate(var(--r,0deg));transition:transform .5s var(--ease)}
+.scard-in{transition:transform .5s var(--ease),box-shadow .4s}
+.scard:hover .scard-in{transform:translateY(-10px) rotate(calc(var(--r,0deg) * -1));box-shadow:14px 16px 0 rgba(24,35,41,.25)}
+.scard .ph{overflow:hidden}
+.scard img{width:100%;height:auto;transition:transform .7s var(--ease)}
+.scard:hover img{transform:scale(1.07)}
+.film{background:var(--ink);color:var(--white);padding:0 6%}
+.holes{height:clamp(22px,2.4vw,34px);display:flex;justify-content:space-between;align-items:center;padding-inline:2px}
+.holes i{width:5.5%;aspect-ratio:1.15/1;background:var(--white);border-radius:2px}
+.scard:hover .holes i{animation:hole 1s var(--ease) infinite alternate}
+.scard:hover .holes i:nth-child(odd){animation-delay:.15s}
+@keyframes hole{to{background:var(--cyan)}}
+.film .meta{padding:6% 0 4%}
+.paper-card{background:var(--white);padding:5% 5% 16%}
+.film .ph{margin-block:4%}
+.paper-card .meta{padding:6% 0 2%}
+.meta strong{display:block;font:800 clamp(13px,1.15vw,17px) var(--font-head);letter-spacing:.01em}
+.meta span{display:block;font-size:clamp(11px,.95vw,14px);opacity:.75;margin-top:6px}
+.sel-cta{position:relative;z-index:2;display:flex;justify-content:flex-end;margin-top:clamp(36px,4vw,56px)}
+.pill-dark:hover{background:var(--white);color:var(--ink)}
+
+/* ---------- FEATURED ---------- */
+.featured{position:relative;overflow:hidden;padding-block:clamp(8px,1vw,16px) clamp(64px,7vw,110px)}
+.feat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(44px,5vw,72px) clamp(20px,3.6vw,50px);margin-top:clamp(40px,5vw,70px);position:relative}
+.fcard{display:block;min-width:0}
+.fwin{border:1.5px solid var(--ink);border-radius:2px 2px 14px 14px;overflow:hidden;background:var(--white);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.fwin .win-bar{background:var(--white);border-bottom:1.5px solid var(--ink);padding:10px 14px;font-size:11px;transition:background .3s}
+.fcard.is-cyan .fwin .win-bar,.fcard:hover .fwin .win-bar{background:var(--cyan)}
+.ctrl{display:flex;gap:12px;font:600 13px var(--font-head)}
+.fwin .ph{position:relative;overflow:hidden;aspect-ratio:836/532}
+.fwin img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.fcard:hover .fwin{transform:translateY(-8px);box-shadow:10px 12px 0 var(--ink)}
+.fcard:hover .fwin img{transform:scale(1.06)}
+.open-tag{position:absolute;left:50%;top:50%;translate:-50% -50%;background:var(--ink);color:var(--white);font:800 13px var(--font-head);letter-spacing:.08em;padding:12px 20px;border-radius:99px;transform:scale(0);transition:transform .45s var(--ease)}
+.fcard:hover .open-tag{transform:scale(1)}
+@media (hover:hover) and (pointer:fine){.open-tag{display:none}}
+.fcard h3{font:800 clamp(24px,2.4vw,34px)/1.1 var(--font-head);letter-spacing:-.02em;margin:22px 0 10px}
+.fcard p{margin:0;color:var(--ink-2);font-size:clamp(14px,1.2vw,17px)}
+
+/* ---------- INSTAGRAM ---------- */
+.insta{position:relative;overflow:hidden;padding-block:clamp(60px,7vw,110px) clamp(80px,9vw,140px)}
+.insta-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,5vw,80px);align-items:center}
+.insta .h-xl{color:var(--cyan)}
+.insta .sel-head,.make .sel-head{border-bottom:0;padding-bottom:0;align-items:flex-start}
+.insta .sel-head .h-xl,.make .sel-head .h-xl{line-height:.86}
+.insta .sel-intro,.make .sel-intro{display:flex;flex-direction:column;align-items:flex-end;padding-top:clamp(4px,.7vw,12px)}
+@media (max-width:1024px){.insta .sel-intro,.make .sel-intro{align-items:flex-start}}
+.head-btn{margin-top:18px;margin-bottom:0}
+.handles-line{display:block;margin-top:8px;font:500 14px var(--font-head);color:var(--muted)}
+.handles-line a:hover{color:var(--ink);text-decoration:underline}
+.make-body{max-width:1000px;margin:clamp(44px,5vw,80px) auto 0}
+.insta-copy p{margin:28px 0 22px;font-size:clamp(15px,1.3vw,19px);color:var(--ink-2)}
+.handles{display:flex;flex-wrap:wrap;gap:6px;color:var(--muted);font:500 15px var(--font-head);margin-bottom:34px}
+.handles a:hover{color:var(--ink);text-decoration:underline}
+.ig-btn{padding:20px 40px;font-size:16px}
+.ig-wrap{position:relative;max-width:980px;margin:clamp(36px,4vw,64px) auto 0;padding:3% 5%}
+.ig-card{position:relative;z-index:5;background:var(--white);border-radius:10px;box-shadow:0 18px 40px rgba(24,35,41,.12);overflow:hidden}
+.ig-top{display:flex;align-items:center;gap:clamp(12px,2vw,26px);padding:clamp(14px,2vw,26px) clamp(16px,3vw,40px)}
+.ig-logo{width:clamp(60px,7vw,96px);aspect-ratio:1;border-radius:50%;border:4px solid var(--cyan);overflow:hidden;flex:none;transition:transform .6s var(--ease)}
+.ig-card:hover .ig-logo{transform:rotate(-12deg) scale(1.05)}
+.ig-logo img{width:100%;height:100%;object-fit:cover}
+.ig-names{font:800 clamp(14px,1.55vw,22px)/1.3 var(--font-head);min-width:0}
+.ig-names a:hover{color:#0aa7c4}
+.ig-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:var(--line)}
+.ig-tiles a{position:relative;overflow:hidden;aspect-ratio:243/188;display:block;background:var(--line)}
+.ig-tiles img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease),filter .4s}
+.ig-tiles a::after{content:"♥";position:absolute;inset:0;display:grid;place-items:center;color:var(--white);font-size:28px;background:rgba(28,221,255,.45);opacity:0;transition:opacity .3s}
+.ig-tiles a:hover img{transform:scale(1.1)}
+.ig-tiles a:hover::after{opacity:1}
+.spark{position:absolute;color:var(--c);font-size:var(--s,20px);left:var(--x);top:var(--y);animation:twinkle 2.6s ease-in-out infinite;animation-delay:var(--d,0s);pointer-events:none}
+@keyframes twinkle{50%{transform:scale(.55) rotate(40deg);opacity:.5}}
+
+/* ---------- LET'S MAKE ---------- */
+.make{position:relative;overflow:hidden;background:var(--cyan-soft);padding-block:clamp(70px,8vw,130px)}
+.make-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(36px,5vw,80px);align-items:center;position:relative;z-index:1}
+.make .h-lg{font-size:clamp(38px,4.6vw,66px)}
+.pill-out{border:1.5px solid var(--ink);background:var(--cyan);color:var(--ink);padding:13px 22px;font-size:14px}
+.pill-out:hover{background:var(--ink);color:var(--cyan)}
+.letter{position:relative;transform:rotate(2deg);transition:transform .7s var(--ease)}
+.letter:hover{transform:rotate(0)}
+.letter-in{background:var(--cyan);border:2px solid var(--ink);box-shadow:12px 12px 0 var(--ink);padding:clamp(18px,3vw,40px) clamp(16px,2.6vw,36px) clamp(18px,2.6vw,34px)}
+.letter .to{font:800 clamp(14px,1.5vw,20px) var(--font-head);margin-bottom:14px}
+.letter-paper{background:var(--white);padding:clamp(18px,3vw,40px) clamp(18px,3vw,40px) clamp(18px,2.4vw,32px);box-shadow:inset 0 -2px 0 rgba(24,35,41,.06)}
+.letter-paper h3{font:800 clamp(32px,3.8vw,54px)/1.05 var(--font-head);letter-spacing:-.025em;margin:0 0 clamp(14px,2vw,24px);padding-bottom:clamp(14px,2vw,24px);border-bottom:1.5px solid var(--line)}
+.letter-paper p{margin:0;text-align:right;font-size:clamp(13px,1.2vw,17px);color:var(--ink-2)}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.6vw,24px);margin-top:clamp(16px,2vw,26px)}
+.tab{display:flex;align-items:center;justify-content:center;gap:6px;border:1.5px solid var(--ink);padding:clamp(10px,1.2vw,15px) clamp(10px,1.4vw,22px);font:800 clamp(11px,1vw,14px) var(--font-head);letter-spacing:.03em;transition:background .25s,transform .35s var(--ease),box-shadow .35s;background:transparent;text-align:center;min-width:0;white-space:normal;line-height:1.25}
+.tab:hover{background:var(--white);transform:translate(-3px,-3px);box-shadow:4px 4px 0 var(--ink)}
+
+/* ---------- FOOTER ---------- */
+.footer{background:var(--ink);color:var(--white);overflow:hidden;position:relative}
+.foot-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:22px;font-size:13px;flex-wrap:nowrap;white-space:nowrap}
+.pill-cyan.sm{padding:12px 20px;font-size:13px;text-transform:none}
+.bigname{display:flex;justify-content:center;font:800 clamp(64px,18.5vw,300px)/.82 "Inter","Helvetica Neue",Arial,sans-serif;letter-spacing:-.06em;padding-block:clamp(12px,2vw,30px) 0;margin-bottom:-.06em;user-select:none;white-space:nowrap}
+.bigname span{color:var(--ink);-webkit-text-stroke:3px rgba(255,255,255,.78);paint-order:stroke fill;letter-spacing:-.06em;display:inline-block;transition:color .35s,transform .5s var(--ease),-webkit-text-stroke-color .35s}
+.bigname span:hover,.bigname span.lit{color:var(--cyan);-webkit-text-stroke-color:var(--cyan);transform:translateY(-6%)}
+
+/* ---------- OVERLAY VIEWS ---------- */
+.view{position:fixed;inset:0;z-index:250;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;visibility:hidden}
+.view.open{visibility:visible}
+.view-inner{min-height:100%;display:flex;flex-direction:column}
+/* contact */
+.contact{background:var(--cyan);transform:translateY(100%);transition:transform .8s var(--ease),visibility 0s .8s}
+.contact.open{transform:none;transition:transform .8s var(--ease)}
+.contact-main{position:relative;flex:1;padding-top:calc(env(safe-area-inset-top,0px) + clamp(100px,10vw,150px));padding-bottom:clamp(60px,6vw,100px);overflow:hidden}
+.contact .h-xl{position:relative;z-index:1;margin-bottom:clamp(36px,4vw,60px)}
+.c-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(30px,5vw,80px);align-items:start;position:relative;z-index:1}
+.c-letter{background:#FDFDF9;border:2px solid var(--ink);box-shadow:16px 16px 0 var(--ink);padding:clamp(22px,4vw,64px) clamp(20px,4vw,64px) 0;position:relative}
+.c-letter .to{font:800 clamp(14px,1.3vw,18px) var(--font-head)}
+.c-letter h3{font:800 clamp(34px,4.2vw,62px)/1.05 var(--font-head);letter-spacing:-.025em;margin:clamp(22px,3vw,44px) 0 clamp(22px,3vw,40px)}
+.c-letter hr{border:0;border-top:1.5px solid var(--line);margin:0}
+.c-letter p{font-size:clamp(16px,1.6vw,23px);line-height:1.65;margin:clamp(22px,3vw,40px) 0}
+.c-mail-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:clamp(22px,3vw,40px)}
+.c-mail{font:700 clamp(19px,2.3vw,32px) var(--font-head);letter-spacing:-.01em;word-break:break-all;user-select:all}
+.copy-btn{border:1.5px solid var(--ink);border-radius:99px;padding:8px 14px;font:700 12px var(--font-head);letter-spacing:.05em;background:var(--white);transition:background .2s}
+.copy-btn:hover{background:var(--cyan)}
+.c-letter .pill{margin:clamp(10px,3vw,40px) 0 clamp(26px,3vw,40px);border:1.5px solid var(--ink)}
+.c-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.6vw,24px);border-top:1.5px solid var(--line);padding-top:clamp(18px,2vw,26px);margin-bottom:calc(-1 * clamp(24px,2.6vw,40px))}
+.c-tab{position:relative;display:flex;align-items:center;gap:6px;border:1.5px solid var(--ink);padding:clamp(12px,1.6vw,22px) clamp(10px,1.2vw,16px);font:800 clamp(11px,1.05vw,15px) var(--font-head);letter-spacing:.03em;background:var(--white);box-shadow:12px 12px 0 var(--ink);transition:transform .35s var(--ease),box-shadow .35s;text-align:left;white-space:normal;line-height:1.25;min-width:0}
+.c-tab:nth-child(odd){background:#DDF7FC}.c-tab:nth-child(even){background:var(--pink)}
+.c-tab:hover{transform:translateY(-8px);box-shadow:12px 20px 0 var(--ink)}
+.c-side{padding-top:6px}
+.c-side .eyebrow{font-size:clamp(12px,1vw,14px)}
+.c-side h3{font:900 clamp(30px,3vw,44px)/1 var(--font-head);letter-spacing:-.03em;margin:4px 0 clamp(26px,3vw,40px)}
+.c-block{border-bottom:1.5px solid rgba(24,35,41,.18);padding-bottom:clamp(18px,2vw,26px);margin-bottom:clamp(18px,2vw,26px)}
+.c-block h4{font:800 14px var(--font-head);letter-spacing:.06em;margin:0 0 14px}
+.c-block a,.c-block .addr{display:flex;align-items:center;gap:6px;font:400 clamp(16px,1.5vw,21px)/1.5 var(--font-head);width:fit-content}
+.c-block a:hover{text-decoration:underline;text-underline-offset:4px}
+.c-block .addr{user-select:all;word-break:break-all}
+.c-btns{display:grid;gap:16px;max-width:280px}
+.c-btns .pill{padding:20px 26px;font-size:16px}
+/* project */
+.project{background:var(--paper);opacity:0;transition:opacity .4s,visibility 0s .4s}
+.project.open{opacity:1;transition:opacity .4s}
+.proj-main{flex:1;padding-top:calc(env(safe-area-inset-top,0px) + clamp(92px,8vw,120px));padding-bottom:clamp(40px,5vw,70px)}
+.pwin{background:var(--white);border:2px solid var(--ink);border-radius:20px 20px 0 0;box-shadow:10px 10px 0 var(--ink);overflow:hidden;transform:translateY(40px) scale(.97);opacity:0;transition:transform .7s var(--ease),opacity .4s}
+.project.ready .pwin{transform:none;opacity:1}
+.pwin>.win-bar{background:#D4F5FB;border-bottom:0;padding:clamp(14px,1.6vw,22px) clamp(16px,2vw,28px);font-size:13px;gap:clamp(20px,6vw,120px)}
+.pwin>.win-bar .win-dots i{width:14px;height:14px}
+.x-btn{font:700 22px/1 var(--font-head);width:36px;height:36px;display:grid;place-items:center;border-radius:50%;transition:background .2s,transform .35s var(--ease)}
+.x-btn:hover{background:var(--white);transform:rotate(90deg)}
+.p-sec{padding:clamp(28px,4vw,56px) clamp(18px,3.4vw,48px);position:relative}
+.p-hero .eyebrow{font-size:clamp(11px,1vw,14px);margin-bottom:clamp(18px,2.4vw,34px)}
+.p-title{min-width:0;display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.p-title h2{overflow-wrap:anywhere;font:900 clamp(44px,10.4vw,150px)/.9 var(--font-head);letter-spacing:-.055em;margin:0}
+.p-num{font:900 clamp(60px,9vw,130px)/.86 var(--font-head);color:var(--cyan);opacity:.55;letter-spacing:-.04em}
+.p-sub{font:800 clamp(24px,2.6vw,38px)/1.2 var(--font-head);letter-spacing:-.02em;margin:clamp(20px,3vw,40px) 0 10px}
+.p-lead{font:400 clamp(15px,1.4vw,20px) var(--font-head);margin:0 0 clamp(22px,3vw,40px)}
+.p-heroimg{border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.p-heroimg img{width:100%;height:auto}
+.p-over{background:#E2F7FB;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(24px,4vw,70px)}
+.p-over h3{font:700 clamp(26px,2.5vw,36px)/1.45 var(--font-body);margin:18px 0 22px;letter-spacing:-.02em}
+.p-over p,.p-two p,.p-sec .note{font-size:clamp(14px,1.15vw,16px);color:var(--ink-2);line-height:1.8;margin:0}
+.facts{margin:0;display:grid}
+.facts>div{border-bottom:1.5px solid var(--line);padding:14px 0}
+.facts>div:last-child{border:0}
+.facts dt{font:800 13px var(--font-head);letter-spacing:.03em;display:inline}
+.facts dd{margin:0;display:inline;font:600 13px var(--font-head)}
+.facts .stack dt{display:block;margin-bottom:8px}
+.facts .stack dd{display:block;font:400 clamp(14px,1.15vw,16px)/1.5 var(--font-head);color:var(--ink-2)}
+.p-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(24px,4vw,70px)}
+.p-two h3{font:800 clamp(24px,2.4vw,34px)/1.1 var(--font-head);margin:0;letter-spacing:-.02em}
+.p-two h4{font:700 clamp(22px,2vw,28px) var(--font-body);margin:0 0 20px}
+.p-two .muted{color:var(--muted);margin-top:16px}
+.p-proc{background:#F5FAFB}
+.p-proc h3,.p-out h3{font:800 clamp(26px,2.6vw,38px)/1.1 var(--font-head);margin:0 0 10px;letter-spacing:-.02em}
+.p-proc .note{margin-bottom:clamp(20px,2.6vw,32px)}
+.proc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,26px)}
+.proc-card{border:1.5px solid var(--line);border-radius:8px;background:var(--white);padding:clamp(14px,1.8vw,24px)}
+.proc-card h5{font:800 clamp(13px,1.1vw,15px) var(--font-head);letter-spacing:.02em;margin:0 0 14px;padding-bottom:8px;position:relative;width:fit-content}
+.proc-card h5::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--cyan);transform-origin:left;transform:scaleX(var(--p,1));transition:transform .8s var(--ease)}
+.quad{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.quad img{width:100%;aspect-ratio:1/1.1;object-fit:cover;transition:transform .5s var(--ease)}
+.quad img:hover{transform:scale(1.04)}
+.out-box{background:#DDE3E6;border:1.5px solid var(--line);border-radius:8px;padding:clamp(16px,2vw,28px)}
+.out-box h4{font:800 clamp(15px,1.4vw,20px) var(--font-head);margin:0 0 clamp(16px,2vw,26px);letter-spacing:.01em}
+.out-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.4vw,20px)}
+.out-item .ph{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--white)}
+.out-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.out-item.web img{object-fit:contain}
+.out-item:hover img{transform:scale(1.05)}
+.out-item b{display:block;font:800 13px var(--font-head);margin:14px 0 8px;letter-spacing:.02em}
+.out-item p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.6}
+.out-sum{border-top:1.5px solid #B9C3C7;margin-top:clamp(20px,2.4vw,34px);padding-top:clamp(16px,2vw,24px);font-size:14px;color:var(--ink-2)}
+.p-nav{display:flex;justify-content:space-between;gap:12px;margin-top:clamp(26px,3vw,44px)}
+.p-nav .pill{padding:16px 34px;font-size:14px}
+.placeholder-note{display:flex;gap:12px;align-items:center;border:1.5px dashed var(--line);border-radius:10px;padding:18px 20px;color:var(--muted);font-size:14px;margin-top:20px}
+/* window opening ghost */
+.ghost{position:fixed;z-index:260;border:2px solid var(--ink);background:var(--white);border-radius:6px;pointer-events:none;overflow:hidden}
+.ghost::before{content:"";position:absolute;left:0;right:0;top:0;height:42px;background:var(--cyan);border-bottom:2px solid var(--ink)}
+
+/* popover + toast */
+.pop{position:fixed;z-index:400;background:var(--white);border:2px solid var(--ink);border-radius:14px;box-shadow:6px 6px 0 var(--ink);padding:8px;min-width:230px;transform:scale(.85);opacity:0;transform-origin:top left;transition:transform .3s var(--ease),opacity .2s;pointer-events:none}
+.pop.open{transform:none;opacity:1;pointer-events:auto}
+.pop p{margin:4px 10px 6px;font:800 11px var(--font-head);letter-spacing:.08em;color:var(--muted)}
+.pop a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 12px;border-radius:9px;font:700 15px var(--font-head)}
+.pop a:hover{background:var(--cyan)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:700;background:var(--ink);color:var(--white);font:600 14px var(--font-body);padding:13px 22px;border-radius:99px;transform:translate(-50%,160%);opacity:0;transition:transform .5s var(--ease),opacity .3s;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast.show{transform:translate(-50%,0);opacity:1}
+
+/* ---------- TABLET ---------- */
+@media (max-width:1024px){
+  .nav{display:none}
+  .burger{display:block}
+  .header{padding-block:14px}
+  .hero-stage{aspect-ratio:1024/1150}
+  .wooni{top:10%;--wk:1.08}
+  .sel-intro{text-align:left}
+  .bigname{font-size:16.5vw}
+  .monitor{left:15%;width:70%}
+  .d1{--x:-6%;--y:26%;--w:58%}.d2{--x:46%;--y:34%;--w:66%}.d3{--x:-12%;--y:70%;--w:36%}
+  .sel-stage{height:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 28px;align-items:start}
+  .scard{position:relative;left:auto;top:auto;width:auto}
+  .scard:nth-child(even){margin-top:70px}
+  .about-grid{grid-template-columns:1fr;justify-items:center}
+  .about-copy{max-width:680px;justify-self:stretch}
+  .c-item{flex-direction:column;gap:6px}
+  .c-item time{order:-1;font-size:12px;color:var(--muted)}
+  .skills li{grid-template-columns:clamp(48px,7vw,64px) minmax(0,1fr)}
+  .sk-desc{grid-column:2}
+  .insta-grid{grid-template-columns:1fr}
+  .make-grid{grid-template-columns:1fr}
+  .c-grid{grid-template-columns:1fr}
+  .c-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+  .c-side .eyebrow,.c-side h3{grid-column:1/-1}
+  .c-btns{grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,220px));max-width:none}
+  .p-over,.p-two{grid-template-columns:1fr}
+  .out-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+/* ---------- MOBILE ---------- */
+@media (max-width:767px){
+  .burger{width:46px;height:46px}
+  .burger i{left:13px;right:13px}.burger i:nth-child(1){top:15px}.burger i:nth-child(2){top:22px}.burger i:nth-child(3){top:29px}
+  .menu-open .burger i:nth-child(1),.menu-open .burger i:nth-child(3){top:22px}
+  .menu-win{top:calc(env(safe-area-inset-top,0px) + 72px)}
+  .hero-stage{aspect-ratio:390/620}
+  .wooni{top:13%;--wk:1.18;-webkit-text-stroke-width:1.5px}
+  .monitor{left:3%;width:94%}
+  .star{--w:13%!important}
+  .trail-img{width:150px}
+  .marquee-item{font-size:16px}
+  .sel-stage{gap:22px 14px}
+  .scard:nth-child(even){margin-top:44px}
+  .sel-intro{text-align:left}
+  .feat-grid{grid-template-columns:1fr}
+  .ig-wrap{padding:6% 0}
+  .tabs,.c-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c-tabs{margin-bottom:-22px}
+  .c-tab{box-shadow:7px 7px 0 var(--ink)}
+  .c-letter{box-shadow:9px 9px 0 var(--ink)}
+  .letter-in{box-shadow:8px 8px 0 var(--ink)}
+  .c-side{grid-template-columns:1fr}
+  .c-btns{grid-template-columns:1fr 1fr}
+  .c-btns .pill{padding:16px 12px;font-size:14px}
+  .p-title{flex-direction:column-reverse;gap:6px}
+  .p-num{font-size:52px}
+  .proc-grid{grid-template-columns:1fr}
+  .out-grid{grid-template-columns:1fr 1fr}
+  .p-nav .pill{padding:14px 20px}
+  .pwin>.win-bar{gap:16px}
+  .foot-row{font-size:12px}
+  .career{grid-template-columns:1fr}
+  .c-item{flex-direction:column;gap:6px}
+  .c-item time{order:-1;font-size:12px;color:var(--muted)}
+  .foot-row .pill{padding:11px 16px!important;font-size:12px}
+  .bigname{font-size:15.5vw}
+  .ig-names{font-size:13px}
+  .h-xl{font-size:clamp(40px,11.5vw,60px)}
+  .contact .h-xl{font-size:clamp(34px,10vw,56px)}
+  .c-letter{padding-inline:18px}
+  .c-tab{padding:12px 10px}
+  .p-sec{padding-inline:16px}
+  .facts dd{display:block;margin-top:4px}
+  .letter-paper p{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="ht" style="left:0;top:4%;width:34%;height:56%;--s:26px;--o:.7"></div>
+  <div class="ht" style="right:0;bottom:0;width:36%;height:60%;--c:var(--pink-dot);--s:24px;--o:.6"></div>
+  <div class="ld-star" style="right:10%;top:16%;width:clamp(48px,7vw,96px)"><svg viewBox="0 0 100 100"><path fill="currentColor" d="M50 0l7 33 30-18-18 30 31 5-31 7 18 30-30-18-7 31-7-31-30 18 18-30L0 50l31-5L13 15l30 18z"/></svg></div>
+  <div class="ld-star" style="left:9%;bottom:16%;width:clamp(40px,5vw,72px)"><svg viewBox="0 0 100 100"><path fill="currentColor" d="M50 0l7 33 30-18-18 30 31 5-31 7 18 30-30-18-7 31-7-31-30 18 18-30L0 50l31-5L13 15l30 18z"/></svg></div>
+  <div class="ld-logo">GOWOON*</div>
+  <div class="ld-year">© 2026</div>
+  <div class="ld-wrap">
+    <div class="ld-win">
+      <div class="ld-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="grow">GOWOON — PORTFOLIO</span><span>– ☐ ×</span></div>
+      <div class="ld-body">
+        <div class="ld-eyebrow">JEONG GOWOON PORTFOLIO</div>
+        <div class="ld-name">GOWOON<span>.</span></div>
+        <div class="ld-text">Brand · Visual · Web</div>
+        <div class="ld-track"><i id="loaderBar"></i></div>
+        <div class="ld-meta"><span>LOADING<span class="ld-text" style="font:inherit;color:inherit"><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></span></span><span id="loaderCount">0%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <svg viewBox="0 0 40 46" fill="none"><path d="M3 3 L3 37 L12.5 28.5 L19.5 43 L26.5 39.8 L19.8 25.6 L32.5 25 Z" fill="#1CDDFF" stroke="#182329" stroke-width="3" stroke-linejoin="round"/></svg>
+  <span class="cursor-label" id="cursorLabel">VIEW</span>
+</div>
+
+<header class="header wrap" id="header">
+  <a href="#top" class="logo" data-go="home" aria-label="GOWOON 홈"><span>G</span><span>O</span><span>W</span><span>O</span><span>O</span><span>N</span><span>*</span></a>
+  <nav class="nav" aria-label="주요 메뉴">
+    <a href="#work" class="nav-link" data-go="work"><span class="br">[</span> WORK <span class="br">]</span></a>
+    <a href="#about" class="nav-link" data-go="about"><span class="br">[</span> ABOUT <span class="br">]</span></a>
+    <a href="#contact" class="pill pill-cyan" data-go="contact" data-cursor="SAY HI">Contact <span class="arr">↗</span></a>
+  </nav>
+  <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button>
+</header>
+
+<aside class="dock" id="dock" aria-label="빠른 메뉴">
+  <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="grow">GOWOON*</span><button class="dock-min" id="dockMin" aria-label="메뉴 접기" aria-expanded="true">–</button></div>
+  <nav class="dock-links">
+    <a href="#work" data-go="work">WORK <span>↗</span></a>
+    <a href="#about" data-go="about">ABOUT <span>↗</span></a>
+    <button data-totop>TOP <span>↑</span></button>
+    <a href="#contact" class="cta" data-go="contact" data-cursor="SAY HI">CONTACT <span>↗</span></a>
+  </nav>
+  <button class="dock-burger" id="dockBurger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="menu"><span class="bars"><i></i><i></i><i></i></span>MENU</button>
+</aside>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu-backdrop" data-close-menu></div>
+  <div class="menu-win" role="dialog" aria-label="메뉴">
+    <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="grow">MENU.EXE</span><button class="x-btn" data-close-menu aria-label="메뉴 닫기" style="width:28px;height:28px;font-size:18px">×</button></div>
+    <ul class="menu-links">
+      <li><a href="#work" data-go="work"><small>01</small>WORK<span class="go">↗</span></a></li>
+      <li><a href="#about" data-go="about"><small>02</small>ABOUT<span class="go">↗</span></a></li>
+      <li><a href="#contact" data-go="contact"><small>03</small>CONTACT<span class="go">↗</span></a></li>
+    </ul>
+    <div class="menu-foot">
+      <button class="chip" data-ig>Instagram ↗</button>
+      <a class="chip" data-link="linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="chip" data-link="youtube" target="_blank" rel="noopener">YouTube ↗</a>
+      <button class="chip" data-copy-email>Email 복사</button>
+      <div class="menu-mail" data-email-text></div>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" id="hero" aria-label="소개">
+    <div class="hero-stage" id="heroStage">
+      <div class="ht" style="left:0;top:4%;width:30%;height:52%;--s:26px;--o:.75"></div>
+      <div class="ht" style="left:60%;top:12%;width:30%;height:66%;--s:22px;--o:.6"></div>
+      <div class="ht" style="left:2%;top:52%;width:34%;height:52%;--c:var(--pink-dot);--s:24px;--o:.65"></div>
+      <div class="deco d2"><svg viewBox="0 0 200 200"><polygon points="100.0,0.0 115.3,63.0 170.7,29.3 137.0,84.7 200.0,100.0 137.0,115.3 170.7,170.7 115.3,137.0 100.0,200.0 84.7,137.0 29.3,170.7 63.0,115.3 0.0,100.0 63.0,84.7 29.3,29.3 84.7,63.0"/></svg></div><div class="deco d3"><svg viewBox="0 0 200 200"><polygon points="200.0,100.0 153.6,112.2 190.1,143.4 143.0,134.3 162.3,178.2 123.9,149.6 122.3,197.5 100.0,155.0 77.7,197.5 76.1,149.6 37.7,178.2 57.0,134.3 9.9,143.4 46.4,112.2 0.0,100.0 46.4,87.8 9.9,56.6 57.0,65.7 37.7,21.8 76.1,50.4 77.7,2.5 100.0,45.0 122.3,2.5 123.9,50.4 162.3,21.8 143.0,65.7 190.1,56.6 153.6,87.8"/></svg></div>
+      <h1 class="wooni" aria-label="GOWOON"><span>W</span><span>o</span><span>o</span><span>n</span><span>i</span></h1>
+      <div class="star" style="--x:87.5%;--y:15%;--w:7%"><svg viewBox="0 0 100 100"><path fill="currentColor" d="M50 0l7 33 30-18-18 30 31 5-31 7 18 30-30-18-7 31-7-31-30 18 18-30L0 50l31-5L13 15l30 18z"/></svg></div>
+      <div class="star" style="--x:12.5%;--y:32%;--w:7%"><svg viewBox="0 0 100 100" style="animation-direction:reverse"><path fill="currentColor" d="M50 0l7 33 30-18-18 30 31 5-31 7 18 30-30-18-7 31-7-31-30 18 18-30L0 50l31-5L13 15l30 18z"/></svg></div>
+      <div class="trail" id="trail" aria-hidden="true"></div>
+      <div class="monitor" id="monitor">
+        <img src="assets/monitor.webp" alt="" width="895" height="865">
+        <div class="screen">
+          <div class="scr-bar">GOWOON — PORTFOLIO <b>– ☐ ×</b></div>
+          <div class="scr-body">
+            <div class="scr-hello">HELLO, I'M</div>
+            <div class="scr-name"><span id="typed">GOWOON.</span><span class="caret"></span></div>
+            <div class="scr-sub">Brand · Visual · Web</div>
+            <a href="#contact" class="scr-btn" data-go="contact" data-cursor="SAY HI">Let's talk ↗</a>
+          </div>
+          <div class="scr-foot">FILE&nbsp;&nbsp;/&nbsp;&nbsp;ABOUT ME</div>
+          <svg class="scr-cursor" viewBox="0 0 40 46" aria-hidden="true"><path d="M3 3 L3 37 L12.5 28.5 L19.5 43 L26.5 39.8 L19.8 25.6 L32.5 25 Z" fill="#1CDDFF" stroke="#182329" stroke-width="3" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-label="사용 툴">
+    <div class="marquee-track" id="marquee">
+      <div class="marquee-group"><span class="marquee-item">After Effects</span><span class="marquee-item">Cinema 4D</span><span class="marquee-item">Photoshop</span><span class="marquee-item">Illustrator</span><span class="marquee-item">Unreal Engine</span><span class="marquee-item">Figma</span><span class="marquee-item">ChatGPT</span><span class="marquee-item">Midjourney</span><span class="marquee-item">Gemini</span><span class="marquee-item">Magnific</span></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="ht" style="right:-4%;top:10%;width:46%;height:90%;--c:#BDEAF2;--s:24px;--o:.8"></div>
+    <div class="about-grid wrap">
+      <div class="about-art" id="aboutArt"><img src="assets/about.webp" alt="디지털 카메라 화면 속 노트북을 든 정고운 캐릭터와 ABOUT ME 레터링" width="1085" height="913"></div>
+      <div class="about-copy">
+        <div class="eyebrow">Jeong Gowoon</div>
+        <h2 class="h-lg split" data-split>IDEAS INTO<br>VISUAL STORIES.</h2>
+        <p class="lead" data-reveal>브랜드의 메시지를 인상적인 콘텐츠로 제작하는 디자이너 정고운입니다.</p>
+        <p data-reveal>공연 영상 디자인 경험을 바탕으로 콘텐츠 기획부터 비주얼 제작까지 진행합니다. 모션그래픽과 3D, AI 기반 이미지·영상으로 콘텐츠를 풀어냅니다.</p>
+        <div class="stats" data-reveal>
+          <div class="stat"><b data-count="4.5" data-fmt="y">4Y 5M</b><span>영상 디자인 실무</span></div>
+          <div class="stat"><b data-count="96">96+</b><span>수록 작업 외 다수</span></div>
+          <div class="stat"><b data-count="300">300+</b><span>기업 연간 영상 제작 참여</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap about-more">
+      <div class="career">
+        <div class="career-col">
+          <h3 class="eyebrow">Experience</h3>
+          <div class="c-item"><div><b>모션이앤티 · 경력 4년 5개월</b><span>영상 디자이너 · 삼성, 현대카드, 국민은행 등 기업 브랜딩·교육 영상과 아티스트 공연 영상 제작</span></div><time>2021.10 — 2026.02</time></div>
+        </div>
+        <div class="career-col">
+          <h3 class="eyebrow">Education</h3>
+          <div class="c-item"><div><b>오즈코딩스쿨</b><span>AI BX 디자이너 캠프 과정 (수료 예정)</span></div><time>2026.08 — 2026.12</time></div>
+          <div class="c-item"><div><b>방송정보국제교육원</b><span>3D 그래픽 기반 영상콘텐츠 과정 수료</span></div><time>2021.03 — 2021.07</time></div>
+          <div class="c-item"><div><b>남서울대학교</b><span>유리세라믹디자인학과 졸업</span></div><time>2017.03 — 2021.02</time></div>
+        </div>
+      </div>
+      <div class="what">
+        <div class="what-head"><h3 class="h-lg split" data-split>WHAT I DO.</h3></div>
+        <ol class="skills">
+        <li><span class="sk-num">01</span><h4 class="sk-title">콘텐츠 기획 및 전략 설계</h4><p class="sk-desc">브랜드 목표에 맞는 콘텐츠 방향성 수립, 메시지 전달 구조와 스토리라인 기획, 캠페인·시리즈형 콘텐츠 기획</p></li>
+        <li><span class="sk-num">02</span><h4 class="sk-title">브랜드 일관성 기반 비주얼 설계</h4><p class="sk-desc">CI·컬러·타이포 기반 디자인 시스템 구축, 톤앤매너를 반영한 영상 제작, 플랫폼 확장을 고려한 비주얼 구조 설계</p></li>
+        <li><span class="sk-num">03</span><h4 class="sk-title">새로운 제작 기술 학습 및 적용</h4><p class="sk-desc">Figma·생성형 AI 영상 툴 실습, 이미지부터 영상까지 이어지는 제작 파이프라인 구축, 목적에 맞는 워크플로우 적용</p></li>
+        <li><span class="sk-num">04</span><h4 class="sk-title">협업 및 프로젝트 운영</h4><p class="sk-desc">기획 → 디자인 → 편집 전 과정 수행, 유관부서·아티스트 측과의 커뮤니케이션, 일정·산출물 관리 중심 운영</p></li>
+        <li><span class="sk-num">05</span><h4 class="sk-title">비주얼 디렉팅</h4><p class="sk-desc">콘서트·쇼케이스 무대 영상의 비주얼 방향 설정, 뮤직비디오와 앨범 아트워크 오브제를 재해석한 세트 디자인, LED 규격과 카메라·조명 움직임을 고려한 공간 연출</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORKS -->
+  <section class="featured" id="work">
+    <div class="ht" style="right:-2%;top:2%;width:40%;height:30%;--c:#BDEAF2;--s:24px;--o:.9"></div>
+    <div class="ht" style="right:0;top:45%;width:36%;height:50%;--c:#D9DEE0;--s:26px;--o:.9"></div>
+    <div class="wrap">
+      <h2 class="h-xl split" data-split>FEATURED<br>WORKS</h2>
+      <div class="feat-grid" id="featGrid"></div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORKS -->
+  <section class="selected" id="selected">
+    <div class="ht" style="left:44%;top:0;width:56%;height:70%;--c:#12B8D9;--s:28px;--o:.75"></div>
+    <div class="wrap">
+      <div class="sel-head">
+        <h2 class="h-xl split" data-split>SELECTED<br>WORKS</h2>
+        <div class="sel-intro" data-reveal><p>다양한 브랜드의 메시지를<br>인상적인 콘텐츠로 제작합니다.</p><span>모션그래픽 · 공연 영상 · 브랜드 필름</span></div>
+      </div>
+      <div class="sel-stage" id="selStage">
+        <a class="scard" data-speed="8" data-link="youtube" target="_blank" rel="noopener" data-cursor="PLAY ▶" style="--x:4.3%;--y:9.9vw;--w:17.6%;--r:-2deg">
+          <div class="scard-in film"><div class="holes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="ph"><img src="assets/sel1.webp" alt="핑크 가방에서 터져 나오는 화장품 오브제" width="294" height="346"></div><div class="holes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        </a>
+        <a class="scard" data-speed="-6" data-link="youtube" target="_blank" rel="noopener" data-cursor="PLAY ▶" style="--x:26.3%;--y:20.6vw;--w:16.9%;--r:2deg">
+          <div class="scard-in paper-card"><div class="ph"><img src="assets/sel2.webp" alt="글리터 메이크업을 한 인물 클로즈업" width="281" height="272"></div></div>
+        </a>
+        <a class="scard" data-speed="12" data-link="youtube" target="_blank" rel="noopener" data-cursor="PLAY ▶" style="--x:47.4%;--y:0vw;--w:27.7%;--r:0deg">
+          <div class="scard-in paper-card"><div class="ph"><img src="assets/sel3.webp" alt="파스텔 오브제 세트 속 인물 화보" width="488" height="575"></div></div>
+        </a>
+        <a class="scard" data-speed="-10" data-link="youtube" target="_blank" rel="noopener" data-cursor="PLAY ▶" style="--x:79.3%;--y:14.7vw;--w:16.3%;--r:2deg">
+          <div class="scard-in film"><div class="holes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="ph"><img src="assets/sel4.webp" alt="분필 낙서 위에 엎드린 인물 화보" width="268" height="346"></div><div class="holes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="insta" id="insta">
+    <div class="ht" style="left:0;top:0;width:30%;height:60%;--s:52px;--o:.25"></div>
+    <div class="wrap">
+      <div class="sel-head">
+        <h2 class="h-xl split" data-split>INSTAGRAM<br>ARCHIVE.</h2>
+        <div class="sel-intro" data-reveal>
+          <p>사진과 작업 기록을 모아두는 공간.<br>인스타그램에서 이어서 만나보세요.</p>
+          <button class="pill pill-cyan head-btn" data-ig>Instagram <span class="arr">↗</span></button>
+        </div>
+      </div>
+      <div class="ig-wrap" id="igWrap">
+        <div class="trail ig-trail" id="igTrail" aria-hidden="true"></div>
+        <span class="spark" style="--x:2%;--y:6%;--c:#F6A4C4">★</span>
+        <span class="spark" style="--x:72%;--y:0%;--c:#9DBBF2;--s:26px;--d:.6s">★</span>
+        <span class="spark" style="--x:97%;--y:20%;--c:#E6C24F;--s:14px;--d:1.1s">★</span>
+        <span class="spark" style="--x:0%;--y:72%;--c:#E6C24F;--s:24px;--d:.3s">★</span>
+        <span class="spark" style="--x:96%;--y:80%;--c:#F6A4C4;--s:16px;--d:1.5s">★</span>
+        <div class="ig-card">
+          <div class="ig-top">
+            <div class="ig-logo"><img src="assets/insta_logo.webp" alt="wooni 프로필 로고"></div>
+            <div class="ig-names"><a data-link="ig1" target="_blank" rel="noopener">@mywooniverse._</a> / <a data-link="ig2" target="_blank" rel="noopener">@neromocha.zip</a></div>
+          </div>
+          <div class="ig-tiles">
+            <a data-link="ig2" target="_blank" rel="noopener" data-cursor="♥ OPEN"><img src="assets/ig1.webp" alt="모자 쓴 강아지와 고양이"></a>
+            <a data-link="ig2" target="_blank" rel="noopener" data-cursor="♥ OPEN"><img src="assets/ig2.webp" alt="수면안대를 쓴 고양이와 강아지"></a>
+            <a data-link="ig2" target="_blank" rel="noopener" data-cursor="♥ OPEN"><img src="assets/ig3.webp" alt="카메라 화면 속 고양이와 강아지"></a>
+            <a data-link="ig2" target="_blank" rel="noopener" data-cursor="♥ OPEN"><img src="assets/ig4.webp" alt="노을 아래 스케이트보드 탄 강아지와 고양이"></a>
+            <a data-link="ig2" target="_blank" rel="noopener" data-cursor="♥ OPEN"><img src="assets/ig5.webp" alt="노트북 앞의 고양이와 강아지"></a>
+            <a data-link="ig2" target="_blank" rel="noopener" data-cursor="♥ OPEN"><img src="assets/ig6.webp" alt="Nero &amp; Mocha 밴드 공연 장면"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LET'S MAKE -->
+  <section class="make" id="make">
+    <div class="ht" style="left:0;top:30%;width:40%;height:80%;--c:#A9DCE6;--s:22px;--o:.8"></div>
+    <div class="ht" style="right:0;bottom:-10%;width:40%;height:40%;--c:#A9DCE6;--s:20px;--o:.8"></div>
+    <div class="wrap">
+      <div class="sel-head">
+        <h2 class="h-xl split" data-split>LET'S MAKE<br>SOMETHING.</h2>
+        <div class="sel-intro" data-reveal>
+          <p>함께 이야기할 다음 장면을 기다립니다.</p>
+          <span>채용 제안이나 작업에 관한 이야기를 편하게 보내주세요.</span>
+          <a href="#contact" class="pill pill-out head-btn" data-go="contact" data-cursor="SAY HI">Open to connect <span class="arr">↗</span></a>
+        </div>
+      </div>
+      <div class="make-body">
+      <div class="letter" id="letter">
+        <div class="letter-in">
+          <div class="to">TO. GOWOON</div>
+          <div class="letter-paper">
+            <h3>Let's talk.</h3>
+            <p>채용 제안이나 작업에 관한 이야기를 보내주세요.</p>
+          </div>
+          <div class="tabs">
+            <button class="tab" data-copy-email data-cursor="COPY">EMAIL ↗</button>
+            <a class="tab" data-link="linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="tab" data-link="youtube" target="_blank" rel="noopener">YouTube ↗</a>
+            <button class="tab" data-ig>INSTAGRAM ↗</button>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="footer">
+  <div class="foot-row wrap">
+    <span>© 2026 GOWOON</span>
+    <button class="pill pill-cyan sm" data-totop>Back to home ↑</button>
+  </div>
+  <div class="bigname" aria-hidden="true"><span>G</span><span>O</span><span>W</span><span>O</span><span>O</span><span>N</span><span>*</span></div>
+</footer>
+
+<!-- CONTACT VIEW -->
+<section class="view contact" id="contactView" data-lenis-prevent aria-label="연락처" aria-hidden="true">
+  <div class="view-inner">
+    <div class="contact-main wrap">
+      <div class="ht" style="right:0;top:6%;width:48%;height:58%;--c:#11B9DA;--s:26px;--o:.85"></div>
+      <div class="ht" style="left:-6%;top:50%;width:30%;height:60%;--c:#62D7EE;--s:18px;--o:.8"></div>
+      <h2 class="h-xl split" data-csplit>LET'S WRITE<br>THE NEXT CHAPTER.</h2>
+      <div class="c-grid">
+        <div class="c-letter">
+          <div class="to">TO. GOWOON</div>
+          <h3>Hello, there.</h3>
+          <hr>
+          <p>포트폴리오를 봐주셔서 감사합니다.<br>채용 제안이나 작업에 관한 이야기를 기다립니다.</p>
+          <hr>
+          <div class="c-mail-row"><span class="c-mail" data-email-text></span><button class="copy-btn" data-copy-email data-cursor="COPY">복사</button></div>
+          <a class="pill pill-cyan" data-link="mail" data-cursor="MAIL">Write an email <span class="arr">↗</span></a>
+          <div class="c-tabs">
+            <button class="c-tab" data-copy-email data-cursor="COPY">EMAIL ↗</button>
+            <button class="c-tab" data-ig>INSTAGRAM ↗</button>
+            <a class="c-tab" data-link="linkedin" target="_blank" rel="noopener">LINKEDIN ↗</a>
+            <a class="c-tab" data-link="youtube" target="_blank" rel="noopener">YOUTUBE ↗</a>
+          </div>
+        </div>
+        <aside class="c-side">
+          <div class="eyebrow">02 / Find me here</div>
+          <h3>SAY HELLO.</h3>
+          <div class="c-block"><h4>EMAIL</h4><span class="addr" data-email-text></span></div>
+          <div class="c-block"><h4>SOCIAL</h4>
+            <a data-link="ig1" target="_blank" rel="noopener">Instagram @mywooniverse._ ↗</a>
+            <a data-link="ig2" target="_blank" rel="noopener">Instagram @neromocha.zip ↗</a>
+            <a data-link="linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a data-link="youtube" target="_blank" rel="noopener">YouTube ↗</a>
+          </div>
+          <div class="c-btns">
+            <a class="pill pill-line" data-link="resume" target="_blank" rel="noopener">Résumé ↗</a>
+            <button class="pill pill-line" data-go="work">Back to Works</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <div class="footer"><div class="foot-row wrap"><span>© 2026 GOWOON</span><button class="pill pill-cyan sm" data-go="home">Back to home ↑</button></div></div>
+  </div>
+</section>
+
+<!-- PROJECT VIEW -->
+<section class="view project" id="projectView" data-lenis-prevent aria-label="프로젝트 상세" aria-hidden="true">
+  <div class="view-inner">
+    <div class="proj-main wrap" id="projMain"></div>
+    <div class="footer"><div class="foot-row wrap"><span>© 2026 GOWOON</span><button class="pill pill-cyan sm" data-go="home">Back to home ↑</button></div></div>
+  </div>
+</section>
+
+<div class="pop" id="igPop" role="menu" aria-label="인스타그램 계정">
+  <p>INSTAGRAM</p>
+  <a data-link="ig1" target="_blank" rel="noopener" role="menuitem">@mywooniverse._ <span>↗</span></a>
+  <a data-link="ig2" target="_blank" rel="noopener" role="menuitem">@neromocha.zip <span>↗</span></a>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* ====== 연결 계정 (여기만 수정하면 전체 버튼에 반영) ====== */
+const LINKS = {
+  email: 'wjdrhdns0801@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/%EA%B3%A0%EC%9A%B4-%EC%A0%95-45b5743a6',
+  youtube: 'https://www.youtube.com/playlist?list=PLRJUHg5hADSnU253dTT5AHJzn7tFFNH3w',
+  ig1: 'https://www.instagram.com/mywooniverse._/',
+  ig2: 'https://www.instagram.com/neromocha.zip/',
+  resume: '' // 이력서 링크(PDF/노션 등)를 넣으면 Résumé 버튼이 연결됩니다
+};
+
+const PROJECTS = [
+  { id:1, img:'assets/feat1.webp', w:1800, h:892, name:'HAPT.', card:'01 / HAPT.', desc:'Beauty brand · Identity / Packaging / Web', full:true,
+    tag:'BRAND IDENTITY / PERSONAL PROJECT', sub:'Everyday Utility Beauty', lead:'Beauty that fits your day.' },
+  { id:2, img:'assets/feat2.webp', w:828, h:516, name:'PROJECT.', card:'02 / PROJECT', desc:'프로젝트명 · 분야 · 소개 추후 입력',
+    tag:'PROJECT 02 / 추후 입력', sub:'프로젝트명 추후 입력', lead:'분야 · 소개 추후 입력' },
+  { id:3, img:'assets/feat3.webp', w:829, h:516, name:'PROJECT.', card:'03 / PROJECT', desc:'프로젝트명 · 분야 · 소개 추후 입력',
+    tag:'PROJECT 03 / 추후 입력', sub:'프로젝트명 추후 입력', lead:'분야 · 소개 추후 입력' },
+  { id:4, img:'assets/feat4.webp', w:828, h:516, name:'PROJECT.', card:'04 / PROJECT', desc:'프로젝트명 · 분야 · 소개 추후 입력',
+    tag:'PROJECT 04 / 추후 입력', sub:'프로젝트명 추후 입력', lead:'분야 · 소개 추후 입력' }
+];
+
+try{ if ('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
+window.scrollTo(0,0);
+addEventListener('load',()=>{ if (!/^#(work|about|selected|contact|project[1-4])$/.test(location.hash)) window.scrollTo(0,0); });
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+const hasGsap = typeof gsap !== 'undefined';
+if (hasGsap && typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+// 로딩 화면 뒤에서 히어로 등장 전 상태를 미리 잡아둠 → 로딩 후 화면이 한 번 보였다가 다시 정리되는 현상 방지
+if (hasGsap && !reduce){
+  gsap.set('.wooni span',{yPercent:110,opacity:0});
+  gsap.set('.scr-hello',{x:-30,opacity:0});
+  gsap.set('.scr-sub,.scr-btn',{y:24,opacity:0});
+  gsap.set('#monitor',{y:80,opacity:0,scale:.94});
+  gsap.set('.header > *',{y:-30,opacity:0});
+  const ty=document.getElementById('typed'); if (ty) ty.textContent='';
+}
+
+/* ---------- links ---------- */
+function wireLinks(root=document){
+  $$('[data-link]', root).forEach(a => {
+    const k = a.dataset.link;
+    if (k === 'mail') a.href = 'mailto:' + LINKS.email;
+    else if (k === 'resume' && !LINKS.resume){ a.removeAttribute('target'); a.href = '#'; a.onclick = e => { e.preventDefault(); toast('이력서 링크는 준비 중이에요. 이메일로 요청해 주세요.'); }; }
+    else if (LINKS[k]) a.href = LINKS[k];
+  });
+  $$('[data-email-text]', root).forEach(el => el.textContent = LINKS.email);
+}
+wireLinks();
+
+let toastT;
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2400); }
+async function copyEmail(){
+  try { await navigator.clipboard.writeText(LINKS.email); toast('이메일 주소를 복사했어요 · ' + LINKS.email); }
+  catch(e){ const el=$('[data-email-text]'); const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast('주소를 선택했어요. 복사해서 사용해 주세요.'); }
+}
+document.addEventListener('click', e => { const b=e.target.closest('[data-copy-email]'); if (b){ e.preventDefault(); copyEmail(); } });
+
+/* ---------- instagram popover ---------- */
+const pop = $('#igPop');
+let popFor = null;
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-ig]');
+  if (b){
+    e.preventDefault(); e.stopPropagation();
+    if (popFor === b && pop.classList.contains('open')){ closePop(); return; }
+    popFor = b;
+    const r = b.getBoundingClientRect();
+    const pw = 240, ph = 150;
+    let x = Math.min(r.left, innerWidth - pw - 16); x = Math.max(16, x);
+    let y = r.bottom + 10; if (y + ph > innerHeight) y = r.top - ph - 10;
+    pop.style.left = x+'px'; pop.style.top = y+'px';
+    pop.style.transformOrigin = (y < r.top ? 'bottom ' : 'top ') + 'left';
+    pop.classList.add('open');
+    return;
+  }
+  if (!e.target.closest('#igPop')) closePop();
+});
+function closePop(){ pop.classList.remove('open'); popFor=null; }
+addEventListener('scroll', closePop, {passive:true});
+
+/* ---------- loader: 실제 이미지 로딩을 기다린 뒤 사이트 노출 ---------- */
+(function(){
+  const L=$('#loader'), c=$('#loaderCount'), bar=$('#loaderBar');
+  const srcs=[...new Set([...$$('img')].map(i=>i.getAttribute('src')).filter(Boolean).concat(
+    ['feat1','feat2','feat3','feat4','hero1','hero2','hero3','hero4','ig1','ig2','ig3','ig4','ig5','ig6'].map(n=>`assets/${n}.webp`)))];
+  let loaded=0, fontsOk=false;
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(()=>{ fontsOk=true; });
+  setTimeout(()=>{ fontsOk=true; },3500);
+  const keep=[];
+  srcs.forEach(src=>{ const im=new Image(); keep.push(im); im.decoding='async';
+    const done=()=>{ loaded++; }; im.onload=()=>{ (im.decode?im.decode():Promise.resolve()).catch(()=>{}).then(done); }; im.onerror=done; im.src=src; });
+  window.__preloaded=keep;
+  if (reduce){ let ok=false; const go=()=>{ if(ok) return; ok=true; prepare(); L.classList.add('done'); reveal(); }; const w=()=>{ if(loaded>=srcs.length) go(); else setTimeout(w,100); }; setTimeout(go,4000); w(); return; }
+  const t0=performance.now(), MIN=1300, MAX=7000; let shown=0, finished=false;
+  function tick(now){
+    const t=now-t0;
+    const timeP=1-Math.pow(1-Math.min(1,t/MIN),3);
+    let loadP=srcs.length? loaded/srcs.length : 1; if (!fontsOk) loadP=Math.min(loadP,.95);
+    const target=Math.min(timeP, t>MAX?1:loadP)*100;
+    shown += (target-shown)*.18; if (target>=100 && shown>99.5) shown=100;
+    const n=Math.round(shown); c.textContent=n+'%'; bar.style.width=n+'%';
+    if (n<100) requestAnimationFrame(tick);
+    else if (!finished){ finished=true; prepare(); setTimeout(()=>{ L.classList.add('done'); reveal(); },160); }
+  }
+  requestAnimationFrame(tick);
+})();
+
+/* ---------- smooth scroll ---------- */
+let lenis = null;
+if (!reduce && typeof Lenis !== 'undefined'){
+  lenis = new Lenis({ lerp:.1, smoothWheel:true });
+  if (hasGsap){ lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0); }
+  else { const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)}; requestAnimationFrame(raf); }
+}
+function scrollToEl(target){
+  const el = typeof target === 'string' ? document.getElementById(target) : target;
+  const off = -70;
+  if (lenis) lenis.scrollTo(el || 0, { offset: el ? off : 0, duration: 1.4 });
+  else if (el) window.scrollTo({ top: el.getBoundingClientRect().top + scrollY + off, behavior: reduce?'auto':'smooth' });
+  else window.scrollTo({ top:0, behavior: reduce?'auto':'smooth' });
+}
+
+/* ---------- header state ---------- */
+const header = $('#header');
+const menu=$('#menu'), burger=$('#burger');
+const dock = $('#dock');
+function onScroll(){
+  const inView = document.body.classList.contains('view-open');
+  const past = scrollY > Math.max(320, $('#hero').offsetHeight * .7);
+  header.classList.toggle('solid', scrollY > 40 || inView);
+  header.classList.toggle('away', past && !inView);
+  dock.classList.toggle('show', past && !inView);
+  if (!past && menu && menu.classList.contains('from-dock') && menu.classList.contains('open')) setMenu(false);
+}
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+/* ---------- custom cursor ---------- */
+const cur = $('#cursor'), curLabel = $('#cursorLabel');
+let mx = innerWidth/2, my = innerHeight/2, cx = mx, cy = my;
+if (fine){
+  document.body.classList.add('custom-cursor');
+  addEventListener('pointermove', e => { mx=e.clientX; my=e.clientY; }, {passive:true});
+  addEventListener('pointerdown', ()=>cur.classList.add('down'));
+  addEventListener('pointerup', ()=>cur.classList.remove('down'));
+  document.addEventListener('pointerover', e => {
+    const t = e.target.closest('[data-cursor], .fcard, a, button');
+    if (t && t.dataset.cursor){ curLabel.textContent=t.dataset.cursor; cur.classList.add('has-label'); }
+    else if (t && t.classList.contains('fcard')){ curLabel.textContent='OPEN ↗'; cur.classList.add('has-label'); }
+    else cur.classList.remove('has-label');
+  });
+  document.addEventListener('pointerleave', ()=>cur.style.opacity=0);
+  document.addEventListener('pointerenter', ()=>cur.style.opacity=1);
+  (function loop(){ cx += (mx-cx)*.35; cy += (my-cy)*.35; cur.style.transform=`translate(${cx-4}px,${cy-4}px)`; requestAnimationFrame(loop); })();
+}
+
+/* ---------- cursor image trail (히어로 · 인스타그램, 최대 2장) ---------- */
+const stage = $('#heroStage'), heroEl = $('#hero');
+function makeTrail(o){
+  const live=[]; let lastX=null,lastY=null,i=0,z=1,lastT=0;
+  o.pool.forEach(n=>{ const im=new Image(); im.src=`assets/${n}.webp`; });
+  const dismiss=(c,fast)=>{ if(c._gone) return; c._gone=true; const k=live.indexOf(c); if(k>-1) live.splice(k,1);
+    if (hasGsap){ gsap.killTweensOf(c); gsap.to(c,{y:'+=50',scale:.75,opacity:0,duration:fast?.45:.8,ease:'power3.in',onComplete:()=>c.remove()}); } else c.remove(); };
+  const spawn=(x,y)=>{
+    o.onSpawn && o.onSpawn();
+    while (live.length >= 2) dismiss(live[0], true);
+    const n=i++ % o.pool.length;
+    const c=document.createElement('div'); c.className='trail-img'+(o.small?' sm':'');
+    c.innerHTML=`<img src="assets/${o.pool[n]}.webp" alt="">`+(o.caption?`<span># 0${n+1}</span>`:'');
+    c.style.zIndex=z++; o.layer.appendChild(c); live.push(c);
+    const w=c.offsetWidth,h=c.offsetHeight,rot=Math.random()*14-7, r=o.area.getBoundingClientRect();
+    const x0=Math.min(Math.max(x-w/2,8),r.width-w-8), y0=Math.min(Math.max(y-h/2,8),r.height-h-8);
+    if (hasGsap) gsap.fromTo(c,{x:x0,y:y0+30,scale:.55,rotation:rot*2.5,opacity:0},{y:y0,scale:1,rotation:rot,opacity:1,duration:.7,ease:'expo.out'});
+    else c.style.transform=`translate(${x0}px,${y0}px) rotate(${rot}deg)`;
+    setTimeout(()=>dismiss(c),1700);
+  };
+  const move=(cx,cy,step)=>{ const r=o.area.getBoundingClientRect(); const x=cx-r.left,y=cy-r.top;
+    if (lastX===null){ lastX=x; lastY=y; return; }
+    const now=performance.now();
+    if (Math.hypot(x-lastX,y-lastY)>step && now-lastT>380){ spawn(x,y); lastX=x; lastY=y; lastT=now; } };
+  if (reduce) return;
+  o.area.addEventListener('pointermove',e=>{ if(e.pointerType==='mouse') move(e.clientX,e.clientY,Math.max(o.small?170:220,innerWidth*(o.small?.12:.17))); });
+  o.area.addEventListener('pointerleave',()=>{ lastX=null; });
+  o.area.addEventListener('touchstart',e=>{ const t=e.touches[0],r=o.area.getBoundingClientRect(); lastX=t.clientX-r.left; lastY=t.clientY-r.top; },{passive:true});
+  o.area.addEventListener('touchmove',e=>{ const t=e.touches[0]; move(t.clientX,t.clientY,140); },{passive:true});
+  o.area.addEventListener('touchend',()=>{ lastX=null; });
+}
+makeTrail({ area:stage, layer:$('#trail'), pool:['hero1','hero2','hero3','hero4'], caption:true, onSpawn:()=>heroEl.classList.add('touched') });
+makeTrail({ area:$('#igWrap'), layer:$('#igTrail'), pool:['ig1','ig2','ig3','ig4','ig5','ig6'], small:true });
+if (!reduce){
+  stage.addEventListener('pointermove', e => {
+    if (e.pointerType!=='mouse' || !hasGsap) return;
+    const r = stage.getBoundingClientRect();
+    const nx = (e.clientX - r.left)/r.width - .5;
+    gsap.to('#monitor',{x:nx*-10,duration:1.2,ease:'power3.out'});
+    gsap.to('.wooni',{x:nx*30,duration:1.4,ease:'power3.out'});
+  });
+}
+
+/* ---------- typing on monitor ---------- */
+function typeName(){
+  const el=$('#typed'); const txt='GOWOON.'; if (reduce) return;
+  el.textContent=''; let i=0;
+  const t=setInterval(()=>{ el.textContent=txt.slice(0,++i); if(i>=txt.length) clearInterval(t); },110);
+}
+
+/* ---------- marquee ---------- */
+(function(){
+  const track=$('#marquee'); const g=track.firstElementChild;
+  for (let k=0;k<2;k++) track.appendChild(g.cloneNode(true));
+  let x=0, v=0, dir=1;
+  function loop(){
+    const w=g.offsetWidth; const lv = lenis ? lenis.velocity : 0;
+    if (lv) dir = lv>0 ? 1 : -1;
+    v += ((reduce?.2:.7) + Math.abs(lv)*.5 - v)*.1;
+    x -= v*dir; if (x<=-w) x+=w; if (x>0) x-=w;
+    track.style.transform=`translate3d(${x}px,0,0)`;
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ---------- featured cards ---------- */
+$('#featGrid').innerHTML = PROJECTS.map((p,i)=>`
+  <a href="#project${p.id}" class="fcard ${i%2===0?'is-cyan':''}" data-project="${p.id}">
+    <div class="fwin">
+      <div class="win-bar"><span class="grow">PROJECT_0${p.id}</span><span class="ctrl"><span>–</span><span>☐</span><span>×</span></span></div>
+      <div class="ph"><img src="${p.img}" alt="${p.card} 대표 이미지" width="${p.w}" height="${p.h}"><span class="open-tag">OPEN ↗</span></div>
+    </div>
+    <h3>${p.card}</h3><p>${p.desc}</p>
+  </a>`).join('');
+
+/* ---------- about tilt ---------- */
+const art=$('#aboutArt');
+if (fine && !reduce){
+  $('#about').addEventListener('pointermove', e=>{
+    const r=art.getBoundingClientRect(); const nx=(e.clientX-r.left)/r.width-.5, ny=(e.clientY-r.top)/r.height-.5;
+    art.firstElementChild.style.transform=`rotateY(${nx*12}deg) rotateX(${-ny*10}deg)`;
+  });
+  $('#about').addEventListener('pointerleave', ()=>art.firstElementChild.style.transform='');
+}
+
+/* ---------- footer letters ---------- */
+$$('.bigname span').forEach((s,i)=>{ s.addEventListener('pointerenter',()=>{ s.classList.add('lit'); setTimeout(()=>s.classList.remove('lit'),700); }); });
+
+/* ---------- split text ---------- */
+function split(el){
+  if (el.dataset.done) return; el.dataset.done=1;
+  el.innerHTML = el.innerHTML.split(/(<br\s*\/?>)/).map(part => part.match(/<br/) ? part :
+    part.split(/(\s+)/).map(w => w.trim() ? `<span class="w">${[...w].map(ch=>`<span class="c">${ch}</span>`).join('')}</span>` : w).join('')).join('');
+}
+$$('[data-split],[data-csplit]').forEach(split);
+
+/* ---------- scroll animations ---------- */
+function initScroll(){
+  if (!hasGsap || typeof ScrollTrigger==='undefined' || reduce) return;
+  $$('[data-split]').forEach(el=>{
+    gsap.from(el.querySelectorAll('.c'),{yPercent:110,duration:.9,stagger:.04,ease:'power4.out',scrollTrigger:{trigger:el,start:'top 85%',once:true}});
+  });
+  $$('[data-reveal]').forEach(el=>{
+    gsap.from(el,{y:36,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+  });
+  // 라벨: 왼쪽에서 밀려 들어옴
+  $$('main .eyebrow').forEach(l=>gsap.from(l,{x:-24,opacity:0,duration:.6,ease:'power3.out',scrollTrigger:{trigger:l,start:'top 88%',once:true}}));
+  // 경력 표: 왼쪽에서 오른쪽으로 마스크 리빌
+  $$('.career-col').forEach(col=>gsap.from(col.querySelectorAll('.c-item'),{clipPath:'inset(0 100% 0 0)',duration:.9,stagger:.08,ease:'power2.inOut',scrollTrigger:{trigger:col,start:'top 88%',once:true}}));
+  // WHAT I DO 행: 왼쪽에서 슬라이드
+  $$('.skills li').forEach(li=>gsap.from(li,{x:-50,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:li,start:'top 90%',once:true}}));
+  // 작업 카드 텍스트 (이미지는 처음부터 보임)
+  $$('.fcard').forEach((c,i)=>gsap.from(c.querySelectorAll('h3,p'),{y:20,opacity:0,duration:.7,stagger:.08,ease:'power3.out',delay:(i%2)*.12,scrollTrigger:{trigger:c,start:'top 88%',once:true}}));
+  // 히어로: 스크롤 시 타이틀이 살짝 올라가며 흐려짐
+  gsap.to('.wooni',{y:-60,opacity:.25,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+
+  const mm = gsap.matchMedia();
+  mm.add('(min-width:1025px)', ()=>{
+    $$('.scard').forEach(c=>{
+      gsap.fromTo(c,{y:+c.dataset.speed*4},{y:-c.dataset.speed*4,ease:'none',scrollTrigger:{trigger:'#selStage',start:'top bottom',end:'bottom top',scrub:true}});
+    });
+    gsap.fromTo('#letter',{rotation:6,y:60},{rotation:2,y:0,ease:'none',scrollTrigger:{trigger:'#make',start:'top bottom',end:'center center',scrub:true}});
+  });
+  gsap.to('.bigname',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'#footer',start:'top bottom',end:'bottom bottom',scrub:true}});
+  // counters
+  $$('[data-count]').forEach(b=>{
+    const end=+b.dataset.count, y=b.dataset.fmt==='y', o={v:0};
+    ScrollTrigger.create({trigger:b,start:'top 92%',once:true,onEnter:()=>gsap.to(o,{v:end,duration:1.6,ease:'power3.out',onUpdate:()=>{
+      b.textContent = y ? `${Math.floor(o.v)}Y ${Math.round((o.v%1)*10)}M` : Math.round(o.v)+'+';
+    },onComplete:()=>{ b.textContent = y ? '4Y 5M' : end+'+'; }})});
+  });
+}
+
+/* ---------- hero intro ---------- */
+function prepare(){
+  if (!/^#(work|about|selected)$/.test(location.hash)){ window.scrollTo(0,0); if (lenis) lenis.scrollTo(0,{immediate:true,force:true}); }
+  initScroll();
+  if (hasGsap && typeof ScrollTrigger!=='undefined') ScrollTrigger.refresh();
+}
+function reveal(){
+  if (hasGsap && !reduce){
+    const tl=gsap.timeline({delay:.25,defaults:{ease:'power3.out'}});
+    tl.to('#monitor',{y:0,opacity:1,scale:1,duration:1.3,ease:'expo.out'},0)
+      .to('.header > *',{y:0,opacity:1,duration:.9,ease:'expo.out',stagger:.08},.1)
+      .to('.wooni span',{yPercent:0,opacity:1,duration:1,stagger:.12,ease:'power4.out'},.05)
+      .add(typeName,.55)
+      .to('.scr-hello',{x:0,opacity:1,duration:.6},.5)
+      .to('.scr-sub,.scr-btn',{y:0,opacity:1,duration:.8,stagger:.1},.9);
+  } else typeName();
+  routeFromHash();
+}
+function start(){ prepare(); reveal(); }
+
+/* ---------- mobile menu ---------- */
+function setMenu(open, fromDock){
+  if (open) menu.classList.toggle('from-dock', !!fromDock);
+  menu.classList.toggle('open',open); document.body.classList.toggle('menu-open',open);
+  [burger,$('#dockBurger')].forEach(b=>{ b.setAttribute('aria-expanded',open); b.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기'); });
+  menu.setAttribute('aria-hidden',!open);
+  if (lenis && !document.body.classList.contains('view-open')) open ? lenis.stop() : lenis.start();
+}
+burger.addEventListener('click',()=>setMenu(!menu.classList.contains('open')));
+$('#dockBurger').addEventListener('click',()=>setMenu(!menu.classList.contains('open'), true));
+$('#dockMin').addEventListener('click',()=>{ const m=dock.classList.toggle('min'); const b=$('#dockMin'); b.textContent=m?'+':'–'; b.setAttribute('aria-expanded',!m); b.setAttribute('aria-label',m?'메뉴 펼치기':'메뉴 접기'); });
+$$('[data-close-menu]').forEach(b=>b.addEventListener('click',()=>setMenu(false)));
+addEventListener('resize',()=>{ if (innerWidth>1024 && menu.classList.contains('open')) setMenu(false); });
+
+/* ---------- views (contact / project) ---------- */
+const contactV=$('#contactView'), projectV=$('#projectView');
+let currentView=null;
+function lockPage(on){
+  document.body.classList.toggle('view-open',on);
+  if (lenis) on ? lenis.stop() : lenis.start();
+  document.documentElement.style.overflow = on ? 'hidden' : '';
+  onScroll();
+}
+function setHash(h){ try{ history.replaceState(null,'',h ? '#'+h : location.pathname + location.search); }catch(e){} }
+function closeViews(instant){
+  [contactV,projectV].forEach(v=>{ if (v.classList.contains('open')){ v.classList.remove('open','ready'); v.setAttribute('aria-hidden','true'); } });
+  if (currentView) lockPage(false);
+  currentView=null; header.classList.remove('on-cyan');
+}
+function openContact(){
+  if (currentView==='contact') return;
+  closeViews(); currentView='contact';
+  contactV.scrollTop=0; contactV.classList.add('open'); contactV.setAttribute('aria-hidden','false');
+  header.classList.add('on-cyan'); lockPage(true); setHash('contact');
+  if (hasGsap && !reduce){
+    gsap.fromTo(contactV.querySelectorAll('[data-csplit] .c'),{yPercent:110},{yPercent:0,duration:.9,ease:'power4.out',stagger:.03,delay:.45});
+    const cm=contactV.querySelector('.c-mail'); cm.innerHTML=[...LINKS.email].map(ch=>`<span class="ch" style="display:inline-block">${ch}</span>`).join('');
+    gsap.fromTo(cm.querySelectorAll('.ch'),{yPercent:60,opacity:0},{yPercent:0,opacity:1,duration:.7,stagger:.025,ease:'back.out(2)',delay:.9});
+    gsap.fromTo(contactV.querySelectorAll('.c-letter,.c-side>*'),{y:50,opacity:0},{y:0,opacity:1,duration:1,ease:'expo.out',stagger:.06,delay:.6});
+    gsap.fromTo(contactV.querySelectorAll('.c-tab'),{y:30,opacity:0},{y:0,opacity:1,duration:.8,ease:'back.out(2)',stagger:.07,delay:1});
+  }
+}
+function projectHTML(p){
+  const nextId = p.id % PROJECTS.length + 1;
+  const head = `
+    <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="grow">PROJECT 0${p.id}</span><button class="x-btn" data-go="close" aria-label="프로젝트 닫기" data-cursor="CLOSE">×</button></div>
+    <div class="p-sec p-hero">
+      <div class="ht" style="left:44%;top:6%;width:40%;height:40%;--c:#A6EBF7;--s:20px;--o:1"></div>
+      <div class="eyebrow">${p.tag}</div>
+      <div class="p-title"><h2>${p.name}</h2><span class="p-num">0${p.id}</span></div>
+      <div class="p-sub">${p.sub}</div>
+      <p class="p-lead">${p.lead}</p>
+      <div class="p-heroimg"><img src="${p.img}" alt="${p.card} 대표 이미지" width="${p.w}" height="${p.h}"></div>
+    </div>`;
+  let body;
+  if (p.full){
+    body = `
+    <div class="p-sec p-over">
+      <div><div class="eyebrow">01 / Overview</div><h3>일상에 자연스럽게<br>스며드는 뷰티 브랜드</h3>
+      <p>공연 영상에서 쌓아온 비주얼 작업 경험을 뷰티 브랜드 디자인으로 넓히기 위해 HAPT.를 기획했습니다. 네이밍부터 패키지, AI 비주얼, 웹 랜딩까지 직접 진행했습니다.</p></div>
+      <dl class="facts">
+        <div><dt>PERIOD / </dt><dd>2026.08 – 2026.09</dd></div>
+        <div><dt>TYPE / </dt><dd>Personal Project</dd></div>
+        <div><dt>CONTRIBUTION / </dt><dd>100%</dd></div>
+        <div class="stack"><dt>ROLE</dt><dd>Brand Planning, Concept Development, Art Direction, Visual Identity, Packaging Design, AI Visual Production, Web Design</dd></div>
+        <div class="stack"><dt>TOOLS</dt><dd>Figma, ChatGPT, Midjourney, Gemini, Magnific</dd></div>
+      </dl>
+    </div>
+    <div class="p-sec p-two">
+      <h3>02 / BACKGROUND<br>&amp; DIRECTION</h3>
+      <div><h4>뷰티 브랜드로 넓힌 작업 영역</h4>
+      <p>제품과 인물, 그래픽, 웹처럼 서로 다른 접점에서도 같은 브랜드로 보이도록 비주얼 기준을 세우는 데 집중했습니다.</p>
+      <p class="muted">HABIT + APT에서 이름을 만들고, Warm White · Sky Blue · Coral을 패키지와 이미지, 웹에 일관되게 적용했습니다.</p></div>
+    </div>
+    <div class="p-sec p-proc">
+      <h3>03 / CREATIVE PROCESS</h3>
+      <p class="note">젤팟 초기 시안의 형태를 검토하고 뚜껑 구조와 용기 비율, 로고 배치를 조정했습니다.</p>
+      <div class="proc-grid">
+        <div class="proc-card"><h5>01 / INITIAL STUDY</h5><div class="quad">
+          <img src="assets/init1.webp" alt="초기 시안 향수형 용기"><img src="assets/init2.webp" alt="초기 시안 스틱 용기"><img src="assets/init3.webp" alt="초기 시안 유리 젤팟"><img src="assets/init4.webp" alt="초기 시안 패키지 박스"></div></div>
+        <div class="proc-card"><h5>02 / REVISED DIRECTION</h5><div class="quad">
+          <img src="assets/rev1.webp" alt="수정 시안 그라데이션 보틀"><img src="assets/rev2.webp" alt="수정 시안 립스틱"><img src="assets/rev3.webp" alt="수정 시안 꽃 모양 젤팟"><img src="assets/rev4.webp" alt="수정 시안 코랄 보틀"></div></div>
+      </div>
+      <p class="note" style="margin:22px 0 0">Figma와 AI 도구로 제품의 질감과 로고 위치를 반복 확인했습니다. 모델 비주얼은 얼굴 · 헤어 · 의상의 기준을 맞추며 여러 구도로 확장했습니다.</p>
+    </div>
+    <div class="p-sec p-out">
+      <h3 style="margin-bottom:24px">04 / FINAL OUTCOME</h3>
+      <div class="out-box"><h4>FINAL OUTCOME / BRAND APPLICATIONS</h4>
+        <div class="out-grid">
+          <div class="out-item"><div class="ph"><img src="assets/out_pack.webp" alt="최종 패키지 4종"></div><b>01 / PACKAGING</b><p>제품 형태와 로고를 정돈해 브랜드 언어를 맞췄습니다.</p></div>
+          <div class="out-item"><div class="ph"><img src="assets/out_model.webp" alt="모델 비주얼 4컷"></div><b>02 / MODEL VISUAL</b><p>인물의 인상을 유지하며 여러 브랜드 장면으로 확장했습니다.</p></div>
+          <div class="out-item"><div class="ph"><img src="assets/out_sns.webp" alt="SNS 비주얼"></div><b>03 / SNS VISUAL</b><p>컬러와 제품 중심의 구도를 SNS 비주얼에 적용했습니다.</p></div>
+          <div class="out-item web"><div class="ph"><img src="assets/out_web.webp" alt="웹 랜딩 페이지 전체 화면"></div><b>04 / WEB LANDING</b><p>아이덴티티가 화면에서도 이어지도록 레이아웃을 구성했습니다.</p></div>
+        </div>
+        <p class="out-sum">브랜드 로고 · 컬러 시스템부터 제품 패키지, 모델 · 캠페인 이미지, SNS 그래픽, 브랜드 공간 콘셉트와 웹 랜딩까지 하나의 방향으로 연결했습니다.</p>
+      </div>
+    </div>
+    <div class="p-sec">
+      <h3 style="font:800 clamp(24px,2.4vw,34px)/1.1 var(--font-head);margin:0 0 16px;letter-spacing:-.02em">05 / REFLECTION</h3>
+      <p class="note">패키지, 모델, 그래픽, 웹에서 같은 인상을 유지하는 일이 쉽지 않았습니다. 기준 이미지를 정하고 반복해서 수정하며 각 결과물의 차이를 줄였습니다.</p>
+    </div>`;
+  } else {
+    body = `
+    <div class="p-sec p-over">
+      <div><div class="eyebrow">01 / Overview</div><h3>프로젝트 소개<br>추후 입력</h3><p>프로젝트 배경과 목표, 진행 과정을 이곳에 정리할 예정입니다.</p></div>
+      <dl class="facts">
+        <div><dt>PERIOD / </dt><dd>추후 입력</dd></div>
+        <div><dt>TYPE / </dt><dd>추후 입력</dd></div>
+        <div><dt>CONTRIBUTION / </dt><dd>추후 입력</dd></div>
+        <div class="stack"><dt>ROLE</dt><dd>추후 입력</dd></div>
+        <div class="stack"><dt>TOOLS</dt><dd>추후 입력</dd></div>
+      </dl>
+    </div>
+    <div class="p-sec"><div class="placeholder-note">✦ 상세 프로세스와 결과물은 업데이트 예정입니다.</div></div>`;
+  }
+  return `<article class="pwin">${head}${body}</article>
+    <div class="p-nav"><button class="pill pill-line" data-go="work">All Works</button><button class="pill pill-line" data-project="${nextId}">Next Project →</button></div>`;
+}
+function openProject(id, fromEl){
+  const p = PROJECTS.find(x=>x.id===+id); if (!p) return;
+  const wasProject = currentView==='project';
+  if (!wasProject) closeViews();
+  currentView='project';
+  $('#projMain').innerHTML = projectHTML(p); wireLinks($('#projMain'));
+  projectV.scrollTop=0; projectV.setAttribute('aria-hidden','false');
+  setHash('project'+p.id);
+  if (!wasProject) lockPage(true);
+  const show = ()=>{ projectV.classList.add('open'); requestAnimationFrame(()=>requestAnimationFrame(()=>projectV.classList.add('ready'))); revealProcBars(); };
+  if (wasProject){ projectV.classList.remove('ready'); setTimeout(()=>projectV.classList.add('ready'),60); return; }
+  if (fromEl && hasGsap && !reduce){
+    const r = fromEl.getBoundingClientRect();
+    const g = document.createElement('div'); g.className='ghost'; document.body.appendChild(g);
+    const pad = Math.max(16, innerWidth*.04);
+    gsap.fromTo(g,{left:r.left,top:r.top,width:r.width,height:r.height},{left:pad,top:96,width:innerWidth-pad*2,height:innerHeight-96,duration:.6,ease:'expo.inOut',onComplete:()=>{ show(); gsap.to(g,{opacity:0,duration:.35,delay:.15,onComplete:()=>g.remove()}); }});
+  } else show();
+}
+function revealProcBars(){
+  $$('.proc-card h5',projectV).forEach((h,i)=>{ h.style.setProperty('--p',0); setTimeout(()=>h.style.setProperty('--p',1),500+i*200); });
+}
+
+/* ---------- routing ---------- */
+document.addEventListener('click', e => {
+  const proj = e.target.closest('[data-project]');
+  if (proj){ e.preventDefault(); setMenu(false); openProject(proj.dataset.project, proj.querySelector('.fwin')); return; }
+  const go = e.target.closest('[data-go]');
+  if (go){
+    e.preventDefault(); const t=go.dataset.go; const wasOpen = menu.classList.contains('open'); setMenu(false);
+    if (t==='contact'){ openContact(); return; }
+    if (t==='close'){ closeViews(); setHash(''); return; }
+    const hadView = !!currentView;
+    closeViews(); setHash(t==='home'?'':t);
+    const target = t==='home' ? null : t;
+    if (hadView || wasOpen) setTimeout(()=>scrollToEl(target), 60); else scrollToEl(target);
+  }
+  if (e.target.closest('[data-totop]')){ e.preventDefault(); scrollToEl(null); }
+});
+addEventListener('keydown', e => {
+  if (e.key==='Escape'){ if (pop.classList.contains('open')) closePop(); else if (menu.classList.contains('open')) setMenu(false); else if (currentView){ closeViews(); setHash(''); } }
+});
+function routeFromHash(){
+  const h = location.hash.replace('#','');
+  if (h==='contact') openContact();
+  else if (/^project[1-4]$/.test(h)) openProject(h.slice(7));
+  else if (h==='work' || h==='about' || h==='selected') setTimeout(()=>scrollToEl(h),300);
+}
+addEventListener('hashchange', routeFromHash);
+</script>
+
+</body>
+</html>
