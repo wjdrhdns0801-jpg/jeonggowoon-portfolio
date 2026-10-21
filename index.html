@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GOWOON | Visual Designer Portfolio</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="공연 영상부터 뷰티·패션 브랜드 콘텐츠까지, 다양한 비주얼 작업을 담은 디자인 포트폴리오입니다.">
+<meta name="description" content="공연 영상부터 브랜드 콘텐츠까지, 다양한 비주얼 작업을 담은 디자인 포트폴리오입니다.">
 <!-- SNS 공유 메타데이터 (Open Graph / X) -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="GOWOON | Visual Designer Portfolio">
-<meta property="og:description" content="공연 영상부터 뷰티·패션 브랜드 콘텐츠까지, 다양한 비주얼 작업을 담은 디자인 포트폴리오입니다.">
+<meta property="og:description" content="공연 영상부터 브랜드 콘텐츠까지, 다양한 비주얼 작업을 담은 디자인 포트폴리오입니다.">
 <meta property="og:url" content="https://jeonggowoon-portfolio.pages.dev/">
 <meta property="og:image" content="https://jeonggowoon-portfolio.pages.dev/assets/og-thumbnail.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="GOWOON | Visual Designer Portfolio">
-<meta name="twitter:description" content="공연 영상부터 뷰티·패션 브랜드 콘텐츠까지, 다양한 비주얼 작업을 담은 디자인 포트폴리오입니다.">
+<meta name="twitter:description" content="공연 영상부터 브랜드 콘텐츠까지, 다양한 비주얼 작업을 담은 디자인 포트폴리오입니다.">
 <meta name="twitter:image" content="https://jeonggowoon-portfolio.pages.dev/assets/og-thumbnail.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,11 +117,14 @@ img{display:block;max-width:100%;height:auto}
 .logo span{display:inline-block;transition:transform .4s var(--ease)}
 .logo:hover span{transform:translateY(-3px) rotate(-4deg)}
 .logo:hover span:nth-child(2n){transform:translateY(2px) rotate(4deg)}
-.nav{display:flex;align-items:center;gap:clamp(32px,9vw,140px)}
-.nav-link{font:700 15px var(--font-head);letter-spacing:.04em;position:relative;padding:6px 2px}
-.nav-link .br{display:inline-block;transition:transform .35s var(--ease)}
-.nav-link:hover .br:first-child{transform:translateX(-6px)}
-.nav-link:hover .br:last-child{transform:translateX(6px)}
+.nav{display:flex;align-items:center;gap:clamp(20px,3vw,48px)}
+.nav-links{display:flex;align-items:center;gap:clamp(14px,2.2vw,36px)}
+.nav-link{font:700 15px var(--font-head);letter-spacing:.04em;position:relative;padding:6px 0;white-space:nowrap;background:linear-gradient(var(--cyan),var(--cyan)) left bottom/0 3px no-repeat;transition:background-size .3s var(--ease)}
+.nav-link:hover,.nav-link.on{background-size:100% 3px}
+body.view-open .nav-link.on:not(:hover){background-size:0 3px}
+body.view-open .dock-links a.on{background:none}
+.dock-links a.on{background:var(--sky)}
+.menu-links a.on small{color:var(--ink)}
 .pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:99px;font:700 14px/1 var(--font-head);letter-spacing:.04em;text-transform:uppercase;padding:15px 26px;transition:transform .35s var(--ease),background .25s,color .25s,box-shadow .3s}
 .pill-cyan{background:var(--cyan);color:var(--ink)}
 .pill-cyan:hover{background:var(--ink);color:var(--cyan);transform:translateY(-2px)}
@@ -168,7 +171,7 @@ img{display:block;max-width:100%;height:auto}
 /* ---------- mobile menu popup ---------- */
 .menu{position:fixed;inset:0;z-index:290;pointer-events:none}
 .menu-backdrop{position:absolute;inset:0;background:rgba(24,35,41,.42);opacity:0;transition:opacity .45s}
-.menu-win{position:absolute;top:calc(env(safe-area-inset-top,0px) + 84px);right:max(16px,env(safe-area-inset-right,0px));width:min(440px,calc(100% - 32px));background:var(--white);border:2px solid var(--ink);border-radius:18px;box-shadow:10px 10px 0 var(--ink);overflow:hidden;transform-origin:calc(100% - 26px) -30px;transform:scale(.2) rotate(6deg);opacity:0;transition:transform .55s var(--ease),opacity .3s}
+.menu-win{max-height:calc(100dvh - env(safe-area-inset-top,0px) - 100px);overflow-y:auto;overscroll-behavior:contain;position:absolute;top:calc(env(safe-area-inset-top,0px) + 84px);right:max(16px,env(safe-area-inset-right,0px));width:min(440px,calc(100% - 32px));background:var(--white);border:2px solid var(--ink);border-radius:18px;box-shadow:10px 10px 0 var(--ink);overflow:hidden;transform-origin:calc(100% - 26px) -30px;transform:scale(.2) rotate(6deg);opacity:0;transition:transform .55s var(--ease),opacity .3s}
 .menu.open{pointer-events:auto}
 .menu.open .menu-backdrop{opacity:1}
 .menu.open .menu-win{transform:none;opacity:1}
@@ -177,10 +180,13 @@ img{display:block;max-width:100%;height:auto}
 .win-bar .grow{flex:1}
 .menu-links{list-style:none;margin:0;padding:10px 20px 6px}
 .menu-links li{border-bottom:1.5px dashed var(--line);overflow:hidden}
-.menu-links a{display:flex;align-items:baseline;gap:14px;padding:16px 4px;font:900 clamp(40px,11vw,56px)/1 var(--font-head);letter-spacing:-.04em;transform:translateY(105%);transition:transform .6s var(--ease),color .2s}
+.menu-links a{display:flex;align-items:baseline;gap:14px;padding:12px 4px;font:900 clamp(28px,7.6vw,40px)/1 var(--font-head);letter-spacing:-.04em;transform:translateY(105%);transition:transform .6s var(--ease),color .2s}
 .menu.open .menu-links a{transform:none}
 .menu.open .menu-links li:nth-child(2) a{transition-delay:.06s}
 .menu.open .menu-links li:nth-child(3) a{transition-delay:.12s}
+.menu.open .menu-links li:nth-child(4) a{transition-delay:.18s}
+.menu.open .menu-links li:nth-child(5) a{transition-delay:.24s}
+.menu.open .menu-links li:nth-child(6) a{transition-delay:.3s}
 .menu-links small{font:700 12px var(--font-head);letter-spacing:.08em;color:var(--muted)}
 .menu-links .go{margin-left:auto;font-size:.5em;transition:transform .35s var(--ease)}
 .menu-links a:hover{color:#0aa7c4}
@@ -279,25 +285,84 @@ img{display:block;max-width:100%;height:auto}
 .sel-intro{text-align:right;max-width:440px}
 .sel-intro p{margin:0;font:700 clamp(17px,1.6vw,24px)/1.4 var(--font-body);color:var(--ink)}
 .sel-intro span{display:block;margin-top:8px;font-size:clamp(13px,1.05vw,15px);color:var(--ink-2);line-height:1.6}
-.sel-stage{position:relative;margin-top:clamp(30px,4vw,60px);height:calc(42vw + 60px)}
-.scard{position:absolute;left:var(--x);top:var(--y);width:var(--w);display:block;transform:rotate(var(--r,0deg));transition:transform .5s var(--ease)}
-.scard-in{transition:transform .5s var(--ease),box-shadow .4s}
-.scard:hover .scard-in{transform:translateY(-10px) rotate(calc(var(--r,0deg) * -1));box-shadow:14px 16px 0 rgba(24,35,41,.25)}
-.scard .ph{overflow:hidden}
-.scard img{width:100%;height:auto;transition:transform .7s var(--ease)}
-.scard:hover img{transform:scale(1.07)}
-.film{background:var(--ink);color:var(--white);padding:0 6%}
-.holes{height:clamp(22px,2.4vw,34px);display:flex;justify-content:space-between;align-items:center;padding-inline:2px}
-.holes i{width:5.5%;aspect-ratio:1.15/1;background:var(--white);border-radius:2px}
-.scard:hover .holes i{animation:hole 1s var(--ease) infinite alternate}
-.scard:hover .holes i:nth-child(odd){animation-delay:.15s}
-@keyframes hole{to{background:var(--cyan)}}
-.film .meta{padding:6% 0 4%}
-.paper-card{background:var(--white);padding:5% 5% 16%}
-.film .ph{margin-block:4%}
-.paper-card .meta{padding:6% 0 2%}
-.meta strong{display:block;font:800 clamp(13px,1.15vw,17px) var(--font-head);letter-spacing:.01em}
-.meta span{display:block;font-size:clamp(11px,.95vw,14px);opacity:.75;margin-top:6px}
+/* selected works — flowing strip */
+.mq{position:relative;z-index:1;margin-top:clamp(30px,4vw,60px);overflow:hidden;touch-action:pan-y;cursor:grab;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%)}
+.mq.dragging{cursor:grabbing}
+.mq.static{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
+.mq-track{display:flex;align-items:flex-start;gap:clamp(18px,2.2vw,34px);width:max-content;padding:26px clamp(16px,3vw,40px) 46px;will-change:transform;--mh:clamp(170px,15vw,240px)}
+.mcard{display:block;flex:none;transform:rotate(-1.5deg);transition:transform .5s var(--ease);-webkit-user-drag:none;user-select:none}
+.mcard:nth-child(even){transform:rotate(1.5deg);margin-top:44px}
+.mcard:nth-child(3n){margin-top:18px}
+.mcard-in{transition:transform .5s var(--ease),box-shadow .4s}
+.mcard:hover .mcard-in,.mcard:focus-visible .mcard-in{transform:translateY(-10px);box-shadow:12px 14px 0 rgba(24,35,41,.25)}
+.mcard:hover{transform:rotate(0)}
+.mcard .ph{position:relative;overflow:hidden}
+.mcard img{display:block;height:var(--mh);width:auto;max-width:none;pointer-events:none;transition:transform .7s var(--ease)}
+.mcard:hover img{transform:scale(1.06)}
+.paper-card{background:var(--white);padding:12px 12px 36px}
+.film{background:var(--ink);padding:0 14px}
+.film .ph{margin-block:4px}
+.holes{height:28px;background:linear-gradient(90deg,var(--white) 0 12px,transparent 12px) 6px 50%/24px 10px repeat-x}
+.mcard:hover .holes{animation:roll .9s linear infinite}
+@keyframes roll{to{background-position:30px 50%}}
+.m-cap{position:absolute;left:0;right:0;bottom:0;padding:44px 14px 12px;background:linear-gradient(transparent,rgba(24,35,41,.86));color:var(--white);font:700 clamp(13px,1.05vw,15px)/1.35 var(--font-body);opacity:0;transform:translateY(8px);transition:opacity .35s,transform .45s var(--ease)}
+.m-cap em{display:block;font:700 11px var(--font-head);font-style:normal;letter-spacing:.08em;color:var(--cyan);margin-bottom:4px}
+.mcard:hover .m-cap,.mcard:focus-visible .m-cap{opacity:1;transform:none}
+.m-play{position:absolute;right:12px;top:12px;width:38px;height:38px;border-radius:50%;background:var(--cyan);color:var(--ink);display:grid;place-items:center;font-size:13px;border:2px solid var(--ink);transform:scale(0);transition:transform .4s var(--ease)}
+.mcard:hover .m-play{transform:scale(1)}
+
+/* all projects archive (collapsible window) */
+.arc-sec{position:relative;overflow:hidden;background:var(--ink);color:var(--white);padding-block:clamp(64px,7vw,110px)}
+.arc-sec .wrap{position:relative;z-index:1}
+.arc-sec .sel-head{border-bottom:0;padding-bottom:0;align-items:flex-start}
+.arc-sec .h-xl{color:var(--white)}
+.arc-sec .sel-intro{display:flex;flex-direction:column;align-items:flex-end;padding-top:clamp(4px,.7vw,12px)}
+.arc-sec .head-btn{margin-top:0}
+.arc-sec .pill-cyan:hover{background:var(--white);color:var(--ink)}
+.archive{margin-top:clamp(36px,4vw,60px);color:var(--ink)}
+.arc-sec .arc-win{box-shadow:10px 10px 0 var(--cyan)}
+.arc-win{position:relative;z-index:1;background:var(--white);border:2px solid var(--ink);border-radius:14px;box-shadow:10px 10px 0 var(--ink);overflow:hidden}
+.arc-bar{width:100%;display:flex;align-items:center;gap:clamp(10px,1.6vw,22px);padding:clamp(14px,1.6vw,20px) clamp(16px,2vw,28px);text-align:left;background:var(--white);transition:background .3s}
+.arc-bar:hover{background:var(--sky)}
+.archive.open .arc-bar{background:var(--cyan);border-bottom:2px solid var(--ink)}
+.arc-bar .win-dots i{width:12px;height:12px}
+.arc-title{font:900 clamp(17px,2vw,28px)/1.1 var(--font-head);letter-spacing:-.02em;min-width:0}
+.arc-count{font:700 12px var(--font-head);letter-spacing:.1em;color:var(--ink-2);white-space:nowrap}
+.arc-count b{font-weight:900;font-variant-numeric:tabular-nums}
+.arc-toggle{margin-left:auto;display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--ink);border-radius:99px;padding:9px 12px 9px 18px;background:var(--ink);color:var(--white);font:700 13px var(--font-body);white-space:nowrap;transition:background .25s,color .25s}
+.arc-bar:hover .arc-toggle{background:var(--cyan);color:var(--ink)}
+.archive.open .arc-toggle{background:var(--white);color:var(--ink)}
+.arc-icon{position:relative;width:14px;height:14px}
+.arc-icon::before,.arc-icon::after{content:"";position:absolute;left:0;right:0;top:6px;height:2px;background:currentColor;border-radius:2px;transition:transform .45s var(--ease)}
+.arc-icon::after{transform:rotate(90deg)}
+.archive.open .arc-icon::after{transform:rotate(0)}
+.arc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .75s var(--ease)}
+.archive.open .arc-body{grid-template-rows:1fr}
+.arc-inner{min-height:0;overflow:hidden}
+.arc-top{display:flex;justify-content:flex-start;align-items:center;gap:16px;flex-wrap:wrap;padding:clamp(18px,2vw,26px) clamp(16px,2vw,28px) 6px}
+.arc-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.arc-tabs button{border:1.5px solid var(--ink);border-radius:99px;padding:8px 15px;font:700 13px var(--font-body);background:var(--white);transition:background .2s,color .2s}
+.arc-tabs button:hover{background:var(--sky)}
+.arc-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--white)}
+.arc-tabs sup{font:700 10px var(--font-head);margin-left:4px;vertical-align:super}
+.arc-rows{list-style:none;margin:0;padding:8px clamp(8px,1.2vw,16px) clamp(14px,1.6vw,22px)}
+.arow{display:grid;grid-template-columns:122px minmax(0,1.25fr) minmax(0,1.5fr) 150px 22px;grid-template-areas:"date title desc meta go";gap:8px clamp(14px,2vw,28px);align-items:center;padding:16px clamp(8px,1vw,14px);border-bottom:1.5px solid var(--line);border-radius:8px;transition:background .25s}
+.arc-rows li:last-child .arow{border-bottom:0}
+.arow:hover,.arow:focus-visible{background:var(--sky)}
+.a-date{grid-area:date;font:600 13px var(--font-head);font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.a-thumb{grid-area:thumb;display:none}
+.a-title{grid-area:title;min-width:0}
+.a-title b{display:block;font:700 clamp(15px,1.2vw,17px)/1.4 var(--font-body)}
+.a-title small{display:block;margin-top:3px;font-size:12px;color:var(--muted)}
+.a-title small .dm{display:none}
+.a-desc{grid-area:desc;min-width:0;font-size:14px;line-height:1.6;color:var(--ink-2)}
+.a-meta{grid-area:meta;font-size:12px;line-height:1.6;color:var(--muted);text-align:right}
+.a-go{grid-area:go;font:700 16px var(--font-head);transition:transform .35s var(--ease)}
+.arow:hover .a-go{transform:translate(3px,-3px)}
+.apv{position:fixed;left:0;top:0;z-index:240;width:300px;pointer-events:none;opacity:0;transform:scale(.85);transition:opacity .25s,transform .35s var(--ease);background:var(--white);border:2px solid var(--ink);border-radius:8px;padding:6px;box-shadow:8px 8px 0 var(--ink)}
+.apv.show{opacity:1;transform:none}
+.apv img{display:block;width:100%;height:auto;border-radius:4px}
+@media (hover:none),(max-width:767px){.apv{display:none}}
 .sel-cta{position:relative;z-index:2;display:flex;justify-content:flex-end;margin-top:clamp(36px,4vw,56px)}
 .pill-dark:hover{background:var(--white);color:var(--ink)}
 
@@ -326,7 +391,7 @@ img{display:block;max-width:100%;height:auto}
 .insta .sel-head,.make .sel-head{border-bottom:0;padding-bottom:0;align-items:flex-start}
 .insta .sel-head .h-xl,.make .sel-head .h-xl{line-height:.86}
 .insta .sel-intro,.make .sel-intro{display:flex;flex-direction:column;align-items:flex-end;padding-top:clamp(4px,.7vw,12px)}
-@media (max-width:1024px){.insta .sel-intro,.make .sel-intro{align-items:flex-start}}
+@media (max-width:1024px){.insta .sel-intro,.make .sel-intro,.arc-sec .sel-intro{align-items:flex-start}}
 .head-btn{margin-top:18px;margin-bottom:0}
 .handles-line{display:block;margin-top:8px;font:500 14px var(--font-head);color:var(--muted)}
 .handles-line a:hover{color:var(--ink);text-decoration:underline}
@@ -493,9 +558,9 @@ img{display:block;max-width:100%;height:auto}
   .bigname{font-size:16.5vw}
   .monitor{left:15%;width:70%}
   .d1{--x:-6%;--y:26%;--w:58%}.d2{--x:46%;--y:34%;--w:66%}.d3{--x:-12%;--y:70%;--w:36%}
-  .sel-stage{height:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 28px;align-items:start}
-  .scard{position:relative;left:auto;top:auto;width:auto}
-  .scard:nth-child(even){margin-top:70px}
+  .arow{grid-template-columns:80px minmax(0,1fr) minmax(0,1.2fr) 20px;grid-template-areas:"date title desc go"}
+  .a-meta{display:none}
+  .a-title small .dm{display:inline}
   .about-grid{grid-template-columns:1fr;justify-items:center}
   .about-copy{max-width:680px;justify-self:stretch}
   .c-item{flex-direction:column;gap:6px}
@@ -523,8 +588,20 @@ img{display:block;max-width:100%;height:auto}
   .star{--w:13%!important}
   .trail-img{width:150px}
   .marquee-item{font-size:16px}
-  .sel-stage{gap:22px 14px}
-  .scard:nth-child(even){margin-top:44px}
+  .mq-track{--mh:170px;gap:16px;padding-bottom:36px}
+  .mcard:nth-child(even){margin-top:30px}
+  .mcard:nth-child(3n){margin-top:12px}
+  .mq{-webkit-mask-image:none;mask-image:none}
+  .arc-bar{flex-wrap:wrap;row-gap:8px}
+  .arc-bar .win-dots{display:none}
+  .arc-count{order:3;width:100%}
+  .arc-toggle{padding:8px 10px 8px 14px}
+  .arow{grid-template-columns:88px minmax(0,1fr) 16px;grid-template-areas:"thumb title go" "thumb desc go";gap:4px 14px;padding:12px 6px}
+  .a-date{display:none}
+  .a-thumb{display:block;align-self:start}
+  .a-thumb img{width:88px;height:60px;object-fit:cover;border-radius:6px;border:1.5px solid var(--line)}
+  .a-desc{font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .a-title small .dm{display:inline}
   .sel-intro{text-align:left}
   .feat-grid{grid-template-columns:1fr}
   .ig-wrap{padding:6% 0}
@@ -595,8 +672,13 @@ img{display:block;max-width:100%;height:auto}
 <header class="header wrap" id="header">
   <a href="#top" class="logo" data-go="home" aria-label="GOWOON 홈"><span>G</span><span>O</span><span>W</span><span>O</span><span>O</span><span>N</span><span>*</span></a>
   <nav class="nav" aria-label="주요 메뉴">
-    <a href="#work" class="nav-link" data-go="work"><span class="br">[</span> WORK <span class="br">]</span></a>
-    <a href="#about" class="nav-link" data-go="about"><span class="br">[</span> ABOUT <span class="br">]</span></a>
+    <div class="nav-links">
+      <a href="#about" class="nav-link" data-go="about" data-sec="about">ABOUT</a>
+      <a href="#work" class="nav-link" data-go="work" data-sec="work">FEATURED</a>
+      <a href="#selected" class="nav-link" data-go="selected" data-sec="selected">SELECTED</a>
+      <a href="#archive" class="nav-link" data-go="archive" data-sec="archive">ARCHIVE</a>
+      <a href="#insta" class="nav-link" data-go="insta" data-sec="insta">INSTAGRAM</a>
+    </div>
     <a href="#contact" class="pill pill-cyan" data-go="contact" data-cursor="SAY HI">Contact <span class="arr">↗</span></a>
   </nav>
   <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button>
@@ -605,8 +687,11 @@ img{display:block;max-width:100%;height:auto}
 <aside class="dock" id="dock" aria-label="빠른 메뉴">
   <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="grow">GOWOON*</span><button class="dock-min" id="dockMin" aria-label="메뉴 접기" aria-expanded="true">–</button></div>
   <nav class="dock-links">
-    <a href="#work" data-go="work">WORK <span>↗</span></a>
-    <a href="#about" data-go="about">ABOUT <span>↗</span></a>
+    <a href="#about" data-go="about" data-sec="about">ABOUT <span>↗</span></a>
+    <a href="#work" data-go="work" data-sec="work">FEATURED <span>↗</span></a>
+    <a href="#selected" data-go="selected" data-sec="selected">SELECTED <span>↗</span></a>
+    <a href="#archive" data-go="archive" data-sec="archive">ARCHIVE <span>↗</span></a>
+    <a href="#insta" data-go="insta" data-sec="insta">INSTAGRAM <span>↗</span></a>
     <button data-totop>TOP <span>↑</span></button>
     <a href="#contact" class="cta" data-go="contact" data-cursor="SAY HI">CONTACT <span>↗</span></a>
   </nav>
@@ -618,9 +703,12 @@ img{display:block;max-width:100%;height:auto}
   <div class="menu-win" role="dialog" aria-label="메뉴">
     <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="grow">MENU.EXE</span><button class="x-btn" data-close-menu aria-label="메뉴 닫기" style="width:28px;height:28px;font-size:18px">×</button></div>
     <ul class="menu-links">
-      <li><a href="#work" data-go="work"><small>01</small>WORK<span class="go">↗</span></a></li>
-      <li><a href="#about" data-go="about"><small>02</small>ABOUT<span class="go">↗</span></a></li>
-      <li><a href="#contact" data-go="contact"><small>03</small>CONTACT<span class="go">↗</span></a></li>
+      <li><a href="#about" data-go="about" data-sec="about"><small>01</small>ABOUT<span class="go">↗</span></a></li>
+      <li><a href="#work" data-go="work" data-sec="work"><small>02</small>FEATURED<span class="go">↗</span></a></li>
+      <li><a href="#selected" data-go="selected" data-sec="selected"><small>03</small>SELECTED<span class="go">↗</span></a></li>
+      <li><a href="#archive" data-go="archive" data-sec="archive"><small>04</small>ARCHIVE<span class="go">↗</span></a></li>
+      <li><a href="#insta" data-go="insta" data-sec="insta"><small>05</small>INSTAGRAM<span class="go">↗</span></a></li>
+      <li><a href="#contact" data-go="contact"><small>06</small>CONTACT<span class="go">↗</span></a></li>
     </ul>
     <div class="menu-foot">
       <button class="chip" data-ig>Instagram ↗</button>
@@ -728,19 +816,84 @@ img{display:block;max-width:100%;height:auto}
         <h2 class="h-xl split" data-split>SELECTED<br>WORKS</h2>
         <div class="sel-intro" data-reveal><p>다양한 브랜드의 메시지를<br>인상적인 콘텐츠로 제작합니다.</p><span>모션그래픽 · 공연 영상 · 브랜드 필름</span></div>
       </div>
-      <div class="sel-stage" id="selStage">
-        <a class="scard" data-speed="8" data-link="youtube" target="_blank" rel="noopener" data-cursor="PLAY ▶" style="--x:4.3%;--y:9.9vw;--w:17.6%;--r:-2deg">
-          <div class="scard-in film"><div class="holes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="ph"><img src="assets/sel1.webp" alt="핑크 가방에서 터져 나오는 화장품 오브제" width="294" height="346"></div><div class="holes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+    </div>
+    <div class="mq" id="mq" data-lenis-prevent aria-label="선정 작업 목록 — 마우스 휠이나 드래그로 넘길 수 있어요">
+      <div class="mq-track" id="mqTrack">
+        <a class="mcard is-proj" href="#project1" data-project="1" data-cursor="OPEN ↗">
+          <div class="mcard-in paper-card"><div class="ph"><img src="assets/sel1.webp" alt="핑크 가방에서 터져 나오는 화장품 오브제" width="294" height="346"><span class="m-cap"><em>PROJECT 01</em>HAPT.</span></div></div>
         </a>
-        <a class="scard" data-speed="-6" data-link="youtube" target="_blank" rel="noopener" data-cursor="PLAY ▶" style="--x:26.3%;--y:20.6vw;--w:16.9%;--r:2deg">
-          <div class="scard-in paper-card"><div class="ph"><img src="assets/sel2.webp" alt="글리터 메이크업을 한 인물 클로즈업" width="281" height="272"></div></div>
+        <a class="mcard is-video" href="https://youtube.com/shorts/eKr9F5EkPCQ" target="_blank" rel="noopener" data-cursor="PLAY ▶">
+          <div class="mcard-in film"><div class="holes"></div><div class="ph"><img src="assets/works/g010.webp" alt="AI Beauty Film — Holiday Spa Campaign" width="1200" height="612"><span class="m-cap"><em>AI 콘텐츠 · 2026.09</em>AI Beauty Film — Holiday Spa Campaign</span><span class="m-play" aria-hidden="true">▶</span></div><div class="holes"></div></div>
         </a>
-        <a class="scard" data-speed="12" data-link="youtube" target="_blank" rel="noopener" data-cursor="PLAY ▶" style="--x:47.4%;--y:0vw;--w:27.7%;--r:0deg">
-          <div class="scard-in paper-card"><div class="ph"><img src="assets/sel3.webp" alt="파스텔 오브제 세트 속 인물 화보" width="488" height="575"></div></div>
+        <a class="mcard is-video" href="https://youtu.be/msI5uMd8AIo" target="_blank" rel="noopener" data-cursor="PLAY ▶">
+          <div class="mcard-in film"><div class="holes"></div><div class="ph"><img src="assets/works/g017.webp" alt="삼성 &#x27;수어의 날&#x27; 로고플레이 가로형" width="1200" height="618"><span class="m-cap"><em>브랜딩·기업 · 2021.08</em>삼성 &#x27;수어의 날&#x27; 로고플레이 가로형</span><span class="m-play" aria-hidden="true">▶</span></div><div class="holes"></div></div>
         </a>
-        <a class="scard" data-speed="-10" data-link="youtube" target="_blank" rel="noopener" data-cursor="PLAY ▶" style="--x:79.3%;--y:14.7vw;--w:16.3%;--r:2deg">
-          <div class="scard-in film"><div class="holes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="ph"><img src="assets/sel4.webp" alt="분필 낙서 위에 엎드린 인물 화보" width="268" height="346"></div><div class="holes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <a class="mcard is-proj" href="#project2" data-project="2" data-cursor="OPEN ↗">
+          <div class="mcard-in paper-card"><div class="ph"><img src="assets/sel2.webp" alt="글리터 메이크업을 한 인물 클로즈업" width="281" height="272"><span class="m-cap"><em>PROJECT 02</em>PROJECT</span></div></div>
         </a>
+        <a class="mcard is-video" href="https://www.youtube.com/playlist?list=PLFZwtMqnXrF4" target="_blank" rel="noopener" data-cursor="PLAY ▶">
+          <div class="mcard-in film"><div class="holes"></div><div class="ph"><img src="assets/works/g014.webp" alt="AI ASMR 인스타 숏폼 콘텐츠" width="930" height="780"><span class="m-cap"><em>AI 콘텐츠 · 2026.06 ~ 진행 중</em>AI ASMR 인스타 숏폼 콘텐츠</span><span class="m-play" aria-hidden="true">▶</span></div><div class="holes"></div></div>
+        </a>
+        <a class="mcard is-video" href="https://youtu.be/4SvhFo-Ku2g" target="_blank" rel="noopener" data-cursor="PLAY ▶">
+          <div class="mcard-in film"><div class="holes"></div><div class="ph"><img src="assets/works/g021.webp" alt="국민은행 기업여신 프로세스 혁신 교육영상 1편" width="1200" height="615"><span class="m-cap"><em>브랜딩·기업 · 2021.03</em>국민은행 기업여신 프로세스 혁신 교육영상 1편</span><span class="m-play" aria-hidden="true">▶</span></div><div class="holes"></div></div>
+        </a>
+        <a class="mcard is-video" href="https://youtube.com/shorts/HKEIasHQTu4" target="_blank" rel="noopener" data-cursor="PLAY ▶">
+          <div class="mcard-in film"><div class="holes"></div><div class="ph"><img src="assets/works/g015.webp" alt="AI Fashion Lookbook" width="1200" height="711"><span class="m-cap"><em>AI 콘텐츠 · 2026.06</em>AI Fashion Lookbook</span><span class="m-play" aria-hidden="true">▶</span></div><div class="holes"></div></div>
+        </a>
+        <a class="mcard is-proj" href="#project3" data-project="3" data-cursor="OPEN ↗">
+          <div class="mcard-in paper-card"><div class="ph"><img src="assets/sel3.webp" alt="파스텔 오브제 세트 속 인물 화보" width="488" height="575"><span class="m-cap"><em>PROJECT 03</em>PROJECT</span></div></div>
+        </a>
+        <a class="mcard is-video" href="https://youtu.be/w9siHEGneP0" target="_blank" rel="noopener" data-cursor="PLAY ▶">
+          <div class="mcard-in film"><div class="holes"></div><div class="ph"><img src="assets/works/g024.webp" alt="소란 콘서트 &lt;괜찮아&gt;" width="1200" height="710"><span class="m-cap"><em>AI 콘텐츠 · 공연 영상 · 2026.01</em>소란 콘서트 &lt;괜찮아&gt;</span><span class="m-play" aria-hidden="true">▶</span></div><div class="holes"></div></div>
+        </a>
+        <a class="mcard is-video" href="https://youtu.be/7aFGZQ-GqpM" target="_blank" rel="noopener" data-cursor="PLAY ▶">
+          <div class="mcard-in film"><div class="holes"></div><div class="ph"><img src="assets/works/g019.webp" alt="현대카드캐피탈 카드영업 2020년 연간사업" width="1200" height="612"><span class="m-cap"><em>브랜딩·기업 · 2020</em>현대카드캐피탈 카드영업 2020년 연간사업</span><span class="m-play" aria-hidden="true">▶</span></div><div class="holes"></div></div>
+        </a>
+        <a class="mcard is-proj" href="#project4" data-project="4" data-cursor="OPEN ↗">
+          <div class="mcard-in paper-card"><div class="ph"><img src="assets/sel4.webp" alt="분필 낙서 위에 엎드린 인물 화보" width="268" height="346"><span class="m-cap"><em>PROJECT 04</em>PROJECT</span></div></div>
+        </a>
+        <a class="mcard is-video" href="https://youtu.be/A4sjyr_2ZEg" target="_blank" rel="noopener" data-cursor="PLAY ▶">
+          <div class="mcard-in film"><div class="holes"></div><div class="ph"><img src="assets/works/g023.webp" alt="한국생산성본부 KSP" width="1200" height="617"><span class="m-cap"><em>브랜딩·기업 · 2021.05</em>한국생산성본부 KSP</span><span class="m-play" aria-hidden="true">▶</span></div><div class="holes"></div></div>
+        </a>
+        <a class="mcard is-video" href="https://youtu.be/XeKZZzFR_LY" target="_blank" rel="noopener" data-cursor="PLAY ▶">
+          <div class="mcard-in film"><div class="holes"></div><div class="ph"><img src="assets/works/g029.webp" alt="투어스 팬미팅 &lt;첫 만남은 계획대로 되지 않아&gt;" width="1200" height="501"><span class="m-cap"><em>공연 영상 · 2025.01</em>투어스 팬미팅 &lt;첫 만남은 계획대로 되지 않아&gt;</span><span class="m-play" aria-hidden="true">▶</span></div><div class="holes"></div></div>
+        </a>
+        <a class="mcard is-video" href="https://youtu.be/Ahml_c9Gq6s" target="_blank" rel="noopener" data-cursor="PLAY ▶">
+          <div class="mcard-in film"><div class="holes"></div><div class="ph"><img src="assets/works/g098.webp" alt="WORLDS FAN FEST 2023 &lt;OPENING VCR&gt;" width="1200" height="620"><span class="m-cap"><em>공연 영상 · 2023.10</em>WORLDS FAN FEST 2023 &lt;OPENING VCR&gt;</span><span class="m-play" aria-hidden="true">▶</span></div><div class="holes"></div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL PROJECTS ARCHIVE -->
+  <section class="arc-sec" id="archive">
+    <div class="ht" style="right:-4%;top:0;width:48%;height:60%;--c:#2C4A56;--s:26px;--o:.9"></div>
+    <div class="wrap">
+      <div class="sel-head">
+        <h2 class="h-xl split" data-split>ALL PROJECTS<br>ARCHIVE.</h2>
+        <div class="sel-intro" data-reveal>
+          <a class="pill pill-cyan head-btn" data-link="youtube" target="_blank" rel="noopener" data-cursor="PLAY ▶">YouTube 재생목록 <span class="arr">↗</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="archive" id="arcWin">
+        <div class="arc-win">
+          <button class="arc-bar" id="arcBar" type="button" aria-expanded="false" aria-controls="arcBody" data-cursor="OPEN">
+            <span class="win-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="arc-title">ALL WORKS</span>
+            <span class="arc-count"><b id="arcCount">96</b> WORKS</span>
+            <span class="arc-toggle"><span class="arc-tlabel">전체 보기</span><span class="arc-icon" aria-hidden="true"></span></span>
+          </button>
+          <div class="arc-body" id="arcBody" aria-hidden="true" inert>
+            <div class="arc-inner">
+              <div class="arc-top">
+                <div class="arc-tabs" id="arcTabs" role="group" aria-label="작업 분류"></div>
+              </div>
+              <ul class="arc-rows" id="arcRows"></ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -909,7 +1062,7 @@ const PROJECTS = [
 
 try{ if ('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
 window.scrollTo(0,0);
-addEventListener('load',()=>{ if (!/^#(work|about|selected|contact|project[1-4])$/.test(location.hash)) window.scrollTo(0,0); });
+addEventListener('load',()=>{ if (!/^#(work|about|selected|archive|insta|contact|project[1-4])$/.test(location.hash)) window.scrollTo(0,0); });
 const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => [...r.querySelectorAll(s)];
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1165,9 +1318,6 @@ function initScroll(){
 
   const mm = gsap.matchMedia();
   mm.add('(min-width:1025px)', ()=>{
-    $$('.scard').forEach(c=>{
-      gsap.fromTo(c,{y:+c.dataset.speed*4},{y:-c.dataset.speed*4,ease:'none',scrollTrigger:{trigger:'#selStage',start:'top bottom',end:'bottom top',scrub:true}});
-    });
     gsap.fromTo('#letter',{rotation:6,y:60},{rotation:2,y:0,ease:'none',scrollTrigger:{trigger:'#make',start:'top bottom',end:'center center',scrub:true}});
   });
   gsap.to('.bigname',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'#footer',start:'top bottom',end:'bottom bottom',scrub:true}});
@@ -1182,7 +1332,7 @@ function initScroll(){
 
 /* ---------- hero intro ---------- */
 function prepare(){
-  if (!/^#(work|about|selected)$/.test(location.hash)){ window.scrollTo(0,0); if (lenis) lenis.scrollTo(0,{immediate:true,force:true}); }
+  if (!/^#(work|about|selected|archive|insta)$/.test(location.hash)){ window.scrollTo(0,0); if (lenis) lenis.scrollTo(0,{immediate:true,force:true}); }
   initScroll();
   if (hasGsap && typeof ScrollTrigger!=='undefined') ScrollTrigger.refresh();
 }
@@ -1197,8 +1347,113 @@ function reveal(){
       .to('.scr-sub,.scr-btn',{y:0,opacity:1,duration:.8,stagger:.1},.9);
   } else typeName();
   routeFromHash();
+  prefetchWorks();
 }
 function start(){ prepare(); reveal(); }
+
+
+/* ---------- all projects archive (데이터: 포트폴리오 PDF 기준) ---------- */
+// [썸네일, 분류, 제목, 작업시기, 기간, 기여도, 링크, 설명, PDF 페이지]
+const WORKS=[["g009", "ai", "부산 국제 록 페스티벌 <한로로 — 이상비행>", "2026.10", "1일", 100, "https://youtu.be/T6paIZSO3cI", "밤하늘과 도시 풍경을 일러스트 무드로 풀어낸 AI 페스티벌 영상", 9], ["g010", "ai", "AI Beauty Film — Holiday Spa Campaign", "2026.09", "5일", 100, "https://youtube.com/shorts/eKr9F5EkPCQ", "키비주얼부터 카피·가격·프로모션 구성까지 직접 기획한 AI 뷰티 필름", 10], ["g011", "ai", "FIFTY FIFTY 콘서트 <Starry Night>", "2026.07", "1.5일", 100, "https://youtu.be/eIBihq1hIVw", "달·구름·행성 이미지에 별빛 파티클을 더한 LED 무대 영상", 11], ["g012", "ai", "FIFTY FIFTY 콘서트 <Push Your Love>", "2026.07", "1.5일", 100, "https://youtu.be/9ltose0vt7M", "스티커처럼 말랑한 입체감으로 에너지를 높인 무대 영상", 12], ["g013", "ai", "FIFTY FIFTY 콘서트 <SOS>", "2026.07", "1.5일", 100, "https://youtu.be/YwguH2bQD5Y", "AI 소스로 제작한 콘서트 무대 영상", 13], ["g014", "ai", "AI ASMR 인스타 숏폼 콘텐츠", "2026.06 ~ 진행 중", "각 1일", 100, "https://www.youtube.com/playlist?list=PLFZwtMqnXrF4", "말랑이·슬라임·키캡 등 ASMR 소재를 AI 숏폼으로 재구성", 14], ["g015", "ai", "AI Fashion Lookbook", "2026.06", "7일", 100, "https://youtube.com/shorts/HKEIasHQTu4", "이미지 생성부터 Kling 영상화까지 룩북 제작 파이프라인 구축", 15], ["g016", "ai", "AI Logo Motion", "2026.06", "1일", 100, "https://youtu.be/VtY7yUhvW1Q", "하나의 로고를 여러 소재와 질감으로 풀어낸 로고 모션", 16], ["g024", "ai", "소란 콘서트 <괜찮아>", "2026.01", "4일", 100, "https://youtu.be/w9siHEGneP0", "동화책 콘셉트의 AI 이미지로 만든 서사형 무대 영상", 24], ["g017", "brand", "삼성 '수어의 날' 로고플레이 가로형", "2021.08", "14일", 100, "https://youtu.be/msI5uMd8AIo", "'I Love You' 수어 동작을 모티프로 한 로고플레이", 17], ["g018", "brand", "삼성 '수어의 날' 로고플레이 세로형", "2021.08", "14일", 100, "https://www.youtube.com/shorts/_E62Fj4vyuU", "SNS에 맞춘 세로형 버전", 18], ["g023", "brand", "한국생산성본부 KSP", "2021.05", "30일", 100, "https://youtu.be/A4sjyr_2ZEg", "영문 내레이션 기반, 다국적 정책 관계자용 인포그래픽 영상", 23], ["g021", "brand", "국민은행 기업여신 프로세스 혁신 교육영상 1편", "2021.03", "45일", 100, "https://youtu.be/4SvhFo-Ku2g", "업무 프로세스를 단계별 모션 인포그래픽으로 구조화", 21], ["g022", "brand", "국민은행 기업여신 프로세스 혁신 교육영상 2편", "2021.03", "45일", 100, "https://youtu.be/1z90DMGWlVo", "모바일 편 교육 영상", 22], ["g019", "brand", "현대카드캐피탈 카드영업 2020년 연간사업", "2020", "10일", "50% (370편 중 16편 제작)", "https://youtu.be/7aFGZQ-GqpM", "연간 약 300편 규모 사내 영상의 후반 제작", 19], ["g020", "brand", "현대카드콜렉션 채권추심 2020년 연간사업", "2020", "10일", "45% (370편 중 16편 제작)", "https://youtu.be/UzEesc2U0D8", "디자인 가이드 기반 컬러 시스템과 인·아웃트로 템플릿 설계", 20], ["g027", "stage", "황민현 팬미팅 <INSIDE OUT>", "2026.01", "1일", 100, "https://youtu.be/ElpqfynWoOU", "팬미팅 무대 영상", 27], ["g026", "stage", "르세라핌 앵콜 서울 콘서트 <FEARLESS>", "2026.01", "1일", 100, "https://youtu.be/2Z6-MZ3mbvs", "기존 세트 디자인을 확장해 앵콜 무대에 맞게 제작", 26], ["g025", "stage", "김재중 팬미팅 <Just Another Girl>", "2026.01", "3일", 100, "https://youtu.be/bwhT6J89tO4", "그래피티 그래픽과 반복되는 가사로 록 에너지를 강조", 25], ["g062", "stage", "르세라핌 COUNTDOWN JAPAN <Perfect Night>", "2025.12", "2일", 100, "https://youtu.be/F778Zed9qoY", "페스티벌 무대 영상", 62], ["g059", "stage", "성시경 2025 Year-end 콘서트 <너를 사랑했던 시간>", "2025.12", "3일", 100, "https://youtu.be/bpA7TbVpyds", "연말 콘서트 무대 영상", 59], ["g061", "stage", "성시경 2025 Year-end 콘서트 <ENCORE VCR>", "2025.12", "1일", 100, "https://youtu.be/cKIYsoAqbxI", "일상의 장면과 메시지를 교차한 연말 앵콜 VCR", 61], ["g060", "stage", "성시경 2025 Year-end 콘서트 <태양계>", "2025.12", "3일", 100, "https://youtu.be/WQ-4-7qpbxo", "곡의 흐름에 따라 궤도와 에너지를 라인 그래픽으로 형상화", 60], ["g056", "stage", "다이나믹듀오 콘서트 <죽일놈>", "2025.12", "3일", 100, "https://youtu.be/-RUuUvcxgmc", "무대 구조를 프레임 삼아 사각형 안에 가사를 정렬", 56], ["g055", "stage", "다이나믹듀오 콘서트 <다시 쓰는 이력서> 2025", "2025.12", "1일", 100, "https://youtu.be/K9GJ-LL9_hk", "거친 화면과 대비되는 타이밍 연출로 가사의 감정선을 확장", 55], ["g057", "stage", "다이나믹듀오 콘서트 <북향>", "2025.12", "3일", 100, "https://youtu.be/gEje61wbXPU", "콘서트 무대 영상", 57], ["g058", "stage", "다이나믹듀오 콘서트 <씨스루>", "2025.12", "3일", 100, "https://youtu.be/zKEjqzn7V9k", "다수의 조명이 배치된 클럽 무드로 영상의 리듬을 설계", 58], ["g054", "stage", "르세라핌 앵콜 도쿄돔 콘서트 <FEARLESS>", "2025.11", "4일", 100, "https://youtu.be/sdyqQE9WXyw", "카메라와 조명의 움직임으로 곡의 강한 에너지를 전달", 54], ["g052", "stage", "WONDERLIVET 2025 <한로로 — 입춘>", "2025.11", "1일", 100, "https://youtu.be/lg7OkgSNpGA", "가사를 따라가며 색 변화로 메시지를 전하는 영상", 52], ["g053", "stage", "WONDERLIVET 2025 <10CM — 스토커>", "2025.11", "1일", 100, "https://youtu.be/1dQFESzoQds", "곡의 흐름을 사계절 변화에 빗대어 표현", 53], ["g051", "stage", "WONDERLIVET 2025 <한로로 — 시간을 달리네>", "2025.11", "1일", 100, "https://youtu.be/g2YmvuDh5aQ", "페스티벌 무대 영상", 51], ["g049", "stage", "BTS 진 앵콜 콘서트 <뷔 - Love Me Again>", "2025.10", "4일", 100, "https://youtu.be/4weDuAFqErE", "몽환적인 분위기 속 익숙한 공간을 무대에서 다시 떠올리게 한 영상", 49], ["g050", "stage", "BTS 진 앵콜 콘서트 <Awake>", "2025.10", "3일", 100, "https://youtu.be/hC8chLweY3g", "<Awake> 뮤직비디오 속 이미지를 활용한 무대 영상", 50], ["g048", "stage", "투어스 쇼케이스 <OVERDRIVE>", "2025.09", "3일", 40, "https://youtu.be/rN41U-9f0cU", "지하철 세트 디자인부터 최종 컴포지팅까지 담당", 48], ["g046", "stage", "베이비복스 콘서트 <GAME OVER>", "2025.09", "3일", 100, "https://youtu.be/XVYleB8j__0", "유리 파편과 글리치로 강렬한 사운드를 시각화", 46], ["g047", "stage", "베이비복스 콘서트 <Play>", "2025.09", "3일", 100, "https://youtu.be/DADgMQ9y89I", "콘서트 무대 영상", 47], ["g045", "stage", "MBC 버추얼아이돌 페스티벌 <존박×호수 — 네 생각>", "2025.08", "3일", 100, "https://youtu.be/ldLHPaAvWTg", "포차 세트와 한강 야경 속 버추얼·현실 가수의 합동 무대", 45], ["g044", "stage", "FTISLAND 콘서트 <Mitaiken Future>", "2025.08", "4일", 100, "https://youtu.be/6aJfvWbb6Zw", "멀티 중계 화면으로 강렬함을 더한 영상", 44], ["g043", "stage", "영파씨 쇼케이스 <FREESTYLE>", "2025.08", "3일", 60, "https://youtu.be/KuTzoIXvg0A", "그래비티·외계인·웨스턴 소재를 결합한 에너지 넘치는 영상", 43], ["g042", "stage", "영탁 TAKSHOW4 콘서트 <BAND INTRO>", "2025.08", "3일", 100, "https://youtu.be/e11E7gQcUhE", "영화사 인트로를 연상시키는 웅장한 로고 영상", 42], ["g041", "stage", "김재중 팬미팅 <OPENING VCR>", "2025.07", "1일", 100, "https://youtu.be/ZxTKPGi9scU", "깃털 오브제로 거칠면서도 섬세한 이미지를 표현", 41], ["g040", "stage", "BTS 진 팬콘서트 <Don't Say You Love Me>", "2025.06", "3일", 100, "https://youtu.be/Rt1tepZpx68", "팬콘서트 무대 영상", 40], ["g038", "stage", "투어스 콘서트 <GO BACK>", "2025.06", "3일", 100, "https://youtu.be/3RFqPsG8D9o", "게임 오브제와 모니터로 만든 플레이 공간 같은 세트", 38], ["g039", "stage", "투어스 콘서트 <마음 따라 뛰는 건 멋지지 않아>", "2025.06", "3일", 100, "https://youtu.be/2zzahn_wz1s", "앞 곡 <GO BACK>과 이어지는 흐름으로 공간 변화를 연출", 39], ["g037", "stage", "아이린&슬기 콘서트 <Like A Flower>", "2025.05", "4일", 100, "https://youtu.be/K7Zu4UTatME", "콘서트 무대 영상", 37], ["g035", "stage", "샤이니 WORLD VII 콘서트 <1 of 1>", "2025.04", "3일", 100, "https://youtu.be/WIOPG845Wgk", "TV와 안테나 등 레트로 오브제를 활용한 세트 디자인", 35], ["g036", "stage", "멜로망스 콘서트 <선물>", "2025.05", "2일", 100, "https://youtu.be/CYAqJHoC4L8", "콘서트 무대 영상", 36], ["g034", "stage", "투어스 쇼케이스 <마음 따라 뛰는 건 멋지지 않아>", "2025.04", "4일", 60, "https://youtu.be/khKawbRVtv4", "컨테이너 구조의 무대 세트를 영상 속으로 연장한 연출", 34], ["g033", "stage", "성시경 팬미팅 <OPENING VCR>", "2025.04", "1일", 100, "https://youtu.be/-4eoto1m2TM", "꽃과 풀 오브제로 봄을 담은 오프닝 VCR", 33], ["g032", "stage", "르세라핌 콘서트 <Perfect Night>", "2025.03", "3일", 100, "https://youtu.be/sq3loww_X4w", "투어 무대용 Perfect Night 영상", 32], ["g031", "stage", "르세라핌 쇼케이스 <CRAZY>", "2025.02", "4일", 100, "https://youtu.be/10xDFn94MgU", "뮤직비디오 속 오브제를 재해석한 사이버펑크 가상 세트", 31], ["g030", "stage", "BTS 제이홉 콘서트 <EGO>", "2025.02", "4일", 100, "https://youtu.be/TNOA0ZruKW0", "수족관 안에 들어가 있는 듯한 수중 무대 영상", 30], ["g029", "stage", "투어스 팬미팅 <첫 만남은 계획대로 되지 않아>", "2025.01", "4일", 100, "https://youtu.be/XeKZZzFR_LY", "앨범 아트워크로 만든 공장 컨베이어벨트 세트", 29], ["g028", "stage", "JUN-K 콘서트 <Higher>", "2024.12", "2일", 100, "https://youtu.be/Lv34pRbliDI", "콘서트 무대 영상", 28], ["g090", "stage", "다이나믹듀오 콘서트 <다시 쓰는 이력서> 2024", "2024.11", "4일", 100, "https://youtu.be/3U7a4vfUvN4", "카메라가 뒤로 물러나며 활동 기록을 회고하는 공간 연출", 90], ["g089", "stage", "투어스 쇼케이스 <내가 태양이라면>", "2024.11", "3일", 100, "https://youtu.be/kpwEhSsAKbA", "동화 같은 겨울밤 무대 세트 영상", 89], ["g087", "stage", "BTS 진 쇼케이스 <I'll Be There>", "2024.10", "3일", 100, "https://youtu.be/MLhLNMrvg2c", "뮤직비디오 장면을 참고한 레이아웃 영상", 87], ["g086", "stage", "BTS 진 쇼케이스 <Another Level>", "2024.10", "3일", 100, "https://youtu.be/dW0NjHPP6ng", "쇼케이스 무대 영상", 86], ["g088", "stage", "러블리즈 콘서트 <안녕>", "2024.11", "3일", 100, "https://youtu.be/m15rbzYoc_Q", "콘서트 무대 영상", 88], ["g085", "stage", "131 HYPE UP FESTIVAL <INTRO VCR>", "2024.11", "1일", 100, "https://youtu.be/08uzKmUXXGQ", "메인 로고 모션과 출연진 라인업 레이아웃", 85], ["g084", "stage", "보아 LIVE TOUR 콘서트 <Quincy>", "2024.09", "3일", 100, "https://youtu.be/42BDXzxiOAo", "단색 디스코볼이 빛나는 디스코 무드 영상", 84], ["g083", "stage", "백현 앵콜 콘서트 <놀이공원>", "2024.07", "3일", 100, "https://youtu.be/RBhN-q5FET0", "앵콜 콘서트 무대 영상", 83], ["g081", "stage", "&TEAM 콘서트 <W.O.L.F>", "2024.07", "4일", 100, "https://youtu.be/XCbotX_n_PM", "늑대를 떠올리는 오브제와 유리가 깨지는 이미지를 결합", 81], ["g082", "stage", "&TEAM 콘서트 <Road Not Taken>", "2024.07", "4일", 100, "https://youtu.be/h8KgLmhUENs", "콘서트 무대 영상", 82], ["g080", "stage", "투어스 쇼케이스 <Hey Hey>", "2024.06", "3일", 100, "https://youtu.be/efFU_0zPJEc", "쇼케이스 무대 영상", 80], ["g079", "stage", "보이넥스트도어 팬미팅 <ABCD LOVE>", "2024.05", "3일", 100, "https://youtu.be/IpVqrRn_zZc", "인스타그램과 음악 앱 레이아웃을 참고한 중계 프레임", 79], ["g077", "stage", "르세라핌 팬미팅 <Choices>", "2024.04", "5일", 100, "https://youtu.be/wJOh5Z-LDUY", "포인트 가사와 미로 같은 공간으로 선택과 고민을 표현한 무대 영상", 77], ["g078", "stage", "르세라핌 팬미팅 <Swan Song>", "2024.04", "3일", 100, "https://youtu.be/pfYmzH9bUFA", "폭포를 네온 톤으로 재해석하고 반짝이는 파티클로 몽환적인 판타지 공간을 만든 영상", 78], ["g076", "stage", "하이라이트 콘서트 <V.I.U>", "2024.04", "3일", 100, "https://youtu.be/xmz4FlVKl7E", "멤버들의 일상을 들여다보는 듯한 영상", 76], ["g074", "stage", "하이라이트 콘서트 <The Fact + Fiction>", "2024.04", "5일", 100, "https://youtu.be/3eKfMnizYEI", "시계 세트가 유지되며 다음 곡으로 이어지는 연출", 74], ["g075", "stage", "하이라이트 콘서트 <불어온다>", "2024.04", "3일", 100, "https://youtu.be/vjN3bHLan7Y", "백스테이지 중계로 시작해 무대가 열리는 순간을 강조", 75], ["g072", "stage", "2024 성시경 축가 콘서트 <폰서트>", "2024.04", "2일", 100, "https://youtu.be/UR2xdHCsP9g", "콘서트 무대 영상", 72], ["g073", "stage", "2024 성시경 축가 콘서트 <희재>", "2024.04", "3일", 100, "https://youtu.be/47f_uC1BpuI", "콘서트 무대 영상", 73], ["g071", "stage", "비비 팬콘서트 <밤양갱>", "2024.04", "4일", 100, "https://youtu.be/S6GXLfY7Qhs", "일러스트 이미지가 서사를 이끌어가는 영상", 71], ["g070", "stage", "르세라핌 Coachella <EASY>", "2024.03", "5일", 100, "https://youtu.be/6dQ9fXUfAh0", "광활한 사막 속 네온 세트 디자인", 70], ["g069", "stage", "키스오브라이프 팬미팅 <OPENING VCR>", "2024.03", "3일", 100, "https://youtu.be/ytdxDLYRNHE", "로고 플레이와 레이아웃 중심의 오프닝", 69], ["g067", "stage", "샤이니 TOKYO 콘서트 <Colors of the Season>", "2024.02", "3일", 100, "https://youtu.be/wWrAAqP1Z5A", "멤버별 고유 컬러가 하나로 이어지는 오로라 영상", 67], ["g068", "stage", "샤이니 TOKYO 콘서트 <1000year>", "2024.02", "3일", 100, "https://youtu.be/Zo01L_dP5Hk", "우주 은하수 공간에 멤버 고유 색상의 오로라를 더한 영상", 68], ["g066", "stage", "르세라핌 쇼케이스 <Perfect Night>", "2024.02", "3일", 100, "https://youtu.be/v7BGpTG8xgk", "폐허 같은 공간 속에 빛나는 오브제와 꽃", 66], ["g065", "stage", "로꼬 콘서트 <BROKEN IPHONE>", "2024.02", "2일", 100, "https://youtu.be/dQC2YKkz440", "콘서트 무대 영상", 65], ["g064", "stage", "투어스 쇼케이스 <VCR>", "2024.01", "1일", 100, "https://youtu.be/s8Wm0hX0Bhs", "로고 플레이로 그룹 아이덴티티를 전달", 64], ["g063", "stage", "터치드 콘서트 <새벽별>", "2024.01", "3일", 100, "https://youtu.be/25ZYivkTV_w", "별빛 가득한 밤하늘 공간의 콘서트 영상", 63], ["g097", "stage", "BTS 정국 FAN LIVE <Still With You>", "2023.11", "3일", 100, "https://youtu.be/y3T6vOzWhXc", "비 내린 창문의 습기가 지워지며 중계 화면이 드러나는 연출", 97], ["g098", "stage", "WORLDS FAN FEST 2023 <OPENING VCR>", "2023.10", "4일", 100, "https://youtu.be/Ahml_c9Gq6s", "페스티벌 세계관과 라인업을 전달하는 오프닝", 98], ["g096", "stage", "임영웅 IM HERO 2023 콘서트 <London Boy>", "2023.10", "4일", 100, "https://youtu.be/dUYQAJ38Ehc", "런던 오브제와 칼레이도스코프 패턴을 활용한 영상", 96], ["g095", "stage", "세븐틴 FOLLOW 콘서트 <Beautiful>", "2023.07", "3일", 100, "https://youtu.be/eIWQlgGhMDY", "그룹의 상징 꽃을 일러스트로 풀어낸 밝은 영상", 95], ["g094", "stage", "세븐틴 FOLLOW 콘서트 <F*ck My Life>", "2023.07", "3일", 100, "https://youtu.be/v5CbqaHqTNE", "무대 세트와 영상이 하나의 정서로 이어지는 연출", 94], ["g093", "stage", "조용필 콘서트 <Feeling of You>", "2023.04", "4일", 100, "https://youtu.be/uDLQisghRDI", "뮤직비디오를 센터에 두고 주변 장면을 확장", 93], ["g092", "stage", "조용필 콘서트 <창 밖의 여자>", "2023.04", "2일", 100, "https://youtu.be/V7D-ILt59xM", "창가에 서서 떠오르는 연인의 이미지를 담은 영상", 92], ["g091", "stage", "BTS 슈가 콘서트 <AMYGDALA>", "2023.04", "4일", 100, "https://youtu.be/8VvN7fsU0_c", "콘서트 무대 영상", 91], ["g103", "stage", "BTS 부산 콘서트 <Butter>", "2022.09", "3일", 100, "https://youtu.be/yr_uQ5uXvbk", "공연 무대 영상", 103], ["g104", "stage", "BTS 부산 콘서트 <Young Forever>", "2022.09", "5일", 100, "https://youtu.be/epIJWN85aQE", "팬들로 가득 찬 공연장 세트로 가수와 팬이 함께하는 순간을 표현", 104], ["g102", "stage", "BTS 제이홉 Lollapalooza <Dynamite>", "2022.07", "3일", 100, "https://youtu.be/S8kTs3COSEw", "페스티벌 무대 영상", 102], ["g101", "stage", "BTS 제이홉 Lollapalooza <Equal Sign>", "2022.07", "3일", 100, "https://youtu.be/lzeiLJs8Sy0", "메시지를 전하는 가사 중심 영상 연출", 101], ["g100", "stage", "세븐틴 WORLD TOUR 콘서트 <Crush>", "2022.06", "7일", 100, "https://youtu.be/Q4xAcg-Y5kY", "로고 형태를 시각화한 블랙·화이트·레드 세트", 100], ["g099", "stage", "BTS PTD 앵콜 콘서트 <고민보다 GO>", "2022.02", "6일", 100, "https://youtu.be/9jKyQo1CX2o", "앵콜 무대 영상", 99]];
+const ARC_CN={ai:'AI 콘텐츠',brand:'브랜딩·기업',stage:'공연 영상'};
+const ARC_EXTRA={9:['stage'],11:['stage'],12:['stage'],13:['stage'],24:['stage'],28:['ai']};
+const arcTags=w=>{const t=[w[1],...(ARC_EXTRA[w[8]]||[])];return ['ai','brand','stage'].filter(k=>t.includes(k));};
+const arcEsc=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const arc=$('#arcWin'), arcBar=$('#arcBar'), arcBody=$('#arcBody'), arcRows=$('#arcRows'), arcTabs=$('#arcTabs');
+$('#arcCount').textContent=WORKS.length;
+let arcRendered=false;
+function arcRender(c){
+  arcRows.innerHTML=WORKS.filter(w=>c==='all'||arcTags(w).includes(c)).map(w=>{
+    const [id,cat,t,d,days,ctb,url,desc]=w, tn=arcTags(w).map(k=>ARC_CN[k]).join(' · ');
+    const info=[days?`작업 ${days}`:'',ctb?`기여도 ${typeof ctb==='number'?ctb+'%':ctb}`:''].filter(Boolean).join(' · ');
+    return `<li><a class="arow" href="${arcEsc(url)}" target="_blank" rel="noopener" data-img="assets/works/${id}.webp" data-cursor="PLAY ▶">
+      <span class="a-date">${arcEsc(d)}</span>
+      <span class="a-thumb"><img src="assets/works/${id}.webp" alt="" width="88" height="60"></span>
+      <span class="a-title"><b>${arcEsc(t)}</b><small><span class="dm">${arcEsc(d)} · </span>${tn}<span class="dm">${info?' · '+info:''}</span></small></span>
+      <span class="a-desc">${arcEsc(desc)}</span>
+      <span class="a-meta">${tn}<br>${info}</span>
+      <span class="a-go" aria-hidden="true">↗</span></a></li>`;}).join('');
+}
+const ARC_CATS=[['all','전체'],['ai','AI 콘텐츠'],['brand','브랜딩·기업'],['stage','공연 영상']];
+arcTabs.innerHTML=ARC_CATS.map(([k,l])=>`<button type="button" data-c="${k}" aria-pressed="${k==='all'}">${l}<sup>${k==='all'?WORKS.length:WORKS.filter(w=>arcTags(w).includes(k)).length}</sup></button>`).join('');
+arcTabs.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return;
+  arcTabs.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b)); arcRender(b.dataset.c);
+  if (hasGsap && !reduce) gsap.from('#arcRows li',{y:16,opacity:0,duration:.45,stagger:.02,ease:'power3.out'});
+  arcRefresh();
+});
+let arcT;
+function arcRefresh(){ clearTimeout(arcT); arcT=setTimeout(()=>{ if (hasGsap && typeof ScrollTrigger!=='undefined') ScrollTrigger.refresh(); if (lenis && lenis.resize) lenis.resize(); },800); }
+function setArc(open){
+  if (open && !arcRendered){ arcRender('all'); arcRendered=true; }
+  arc.classList.toggle('open',open);
+  arcBar.setAttribute('aria-expanded',open); arcBar.dataset.cursor=open?'CLOSE':'OPEN';
+  arcBody.setAttribute('aria-hidden',!open); arcBody.inert=!open;
+  $('.arc-tlabel',arcBar).textContent=open?'접기':'전체 보기';
+  if (open && hasGsap && !reduce) gsap.from([...arcRows.children].slice(0,14),{y:24,opacity:0,duration:.6,stagger:.035,ease:'power3.out',delay:.15});
+  arcRefresh();
+}
+arcBar.addEventListener('click',()=>setArc(!arc.classList.contains('open')));
+// 행 호버 미리보기 (마우스 환경)
+const apv=document.createElement('div'); apv.className='apv'; apv.setAttribute('aria-hidden','true'); apv.innerHTML='<img alt="">'; document.body.appendChild(apv);
+if (fine){
+  let px=0,py=0,lx=0;
+  arcRows.addEventListener('mouseover',e=>{const r=e.target.closest('.arow'); if(!r) return; apv.firstChild.src=r.dataset.img; apv.classList.add('show');});
+  arcRows.addEventListener('mouseleave',()=>apv.classList.remove('show'));
+  arcRows.addEventListener('mousemove',e=>{
+    const x=Math.min(e.clientX+36,innerWidth-320), y=Math.max(16,Math.min(e.clientY-100,innerHeight-220));
+    const rot=Math.max(-6,Math.min(6,(e.clientX-lx)*.5)); lx=e.clientX;
+    if (hasGsap) gsap.to(apv,{x,y,rotation:rot,duration:.5,ease:'power3.out',overwrite:'auto'}); else apv.style.transform=`translate(${x}px,${y}px)`;
+  });
+}
+// 아카이브 썸네일 미리 받아두기 (사이트 로딩 후 여유 시간에)
+function prefetchWorks(){ const go=()=>WORKS.forEach(w=>{ const i=new Image(); i.src=`assets/works/${w[0]}.webp`; });
+  ('requestIdleCallback' in window) ? requestIdleCallback(go,{timeout:3000}) : setTimeout(go,1500); }
+
+/* ---------- selected works: 옆으로 흐르는 띠 ---------- */
+(function(){
+  const mq=$('#mq'), track=$('#mqTrack'); if(!mq) return;
+  if (reduce){ mq.classList.add('static'); return; }
+  [...track.children].forEach(n=>{ const c=n.cloneNode(true); c.setAttribute('aria-hidden','true'); c.tabIndex=-1; track.appendChild(c); });
+  let x=0, v=0, hover=false, drag=null, moved=0, half=track.scrollWidth/2, wv=0;
+  const measure=()=>{ half=track.scrollWidth/2; };
+  addEventListener('resize',measure); addEventListener('load',measure);
+  const wrapX=()=>{ if (half>0){ while(x<=-half) x+=half; while(x>0) x-=half; } };
+  (function loop(){
+    const base=innerWidth<768?.45:.6, lv=lenis? Math.abs(lenis.velocity||0):0;
+    const target=(hover||drag)?0:base+Math.min(lv*.25,6);
+    v+=(target-v)*.08; if(!drag) x-=v; x-=wv*.18; wv*=.84; if(Math.abs(wv)<.05) wv=0; wrapX();
+    track.style.transform=`translate3d(${x}px,0,0)`;
+    requestAnimationFrame(loop);
+  })();
+  if (fine){ mq.addEventListener('mouseenter',()=>hover=true); mq.addEventListener('mouseleave',()=>hover=false); }
+  mq.addEventListener('pointerdown',e=>{ if(e.button!==0) return; drag={sx:e.clientX,x0:x,id:e.pointerId}; moved=0; });
+  addEventListener('pointermove',e=>{ if(!drag) return; const dx=e.clientX-drag.sx;
+    if (Math.abs(dx)>6 && !mq.classList.contains('dragging')){ mq.classList.add('dragging'); try{ mq.setPointerCapture(drag.id); }catch(_){} }
+    moved=Math.max(moved,Math.abs(dx)); if (mq.classList.contains('dragging')){ x=drag.x0+dx; wrapX(); } });
+  const end=()=>{ if(!drag) return; drag=null; mq.classList.remove('dragging'); };
+  addEventListener('pointerup',end); addEventListener('pointercancel',end);
+  mq.addEventListener('click',e=>{ if(moved>6){ e.preventDefault(); e.stopPropagation(); moved=0; } },true);
+  mq.addEventListener('dragstart',e=>e.preventDefault());
+  // 마우스 휠(세로·가로 모두)로 띠를 옆으로 이동
+  mq.addEventListener('wheel',e=>{
+    const d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY; if(!d) return;
+    e.preventDefault(); wv+=(e.deltaMode===1?d*30:d);
+  },{passive:false});
+  // 키보드로 카드에 들어오면 멈추고 보이는 위치로 이동
+  mq.addEventListener('focusin',e=>{ const c=e.target.closest('.mcard'); if(!c) return; hover=true; x=-(c.offsetLeft-60); wrapX(); });
+  mq.addEventListener('focusout',()=>{ hover=false; });
+})();
+
+/* ---------- 현재 보고 있는 섹션을 메뉴에 표시 ---------- */
+(function(){
+  const ids=['about','work','selected','archive','insta'];
+  const links=$$('[data-sec]');
+  const upd=()=>{ const mid=innerHeight*.45; let cur=null;
+    ids.forEach(id=>{ const el=document.getElementById(id); if (el && el.getBoundingClientRect().top<=mid) cur=id; });
+    const ins=document.getElementById('insta'); if (ins && ins.getBoundingClientRect().bottom<mid) cur=null;
+    links.forEach(a=>a.classList.toggle('on',a.dataset.sec===cur)); };
+  addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
+})();
 
 /* ---------- mobile menu ---------- */
 function setMenu(open, fromDock){
@@ -1343,12 +1598,13 @@ function revealProcBars(){
 /* ---------- routing ---------- */
 document.addEventListener('click', e => {
   const proj = e.target.closest('[data-project]');
-  if (proj){ e.preventDefault(); setMenu(false); openProject(proj.dataset.project, proj.querySelector('.fwin')); return; }
+  if (proj){ e.preventDefault(); setMenu(false); openProject(proj.dataset.project, proj.querySelector('.fwin, .ph')); return; }
   const go = e.target.closest('[data-go]');
   if (go){
     e.preventDefault(); const t=go.dataset.go; const wasOpen = menu.classList.contains('open'); setMenu(false);
     if (t==='contact'){ openContact(); return; }
     if (t==='close'){ closeViews(); setHash(''); return; }
+    if (t==='archive') setArc(true);
     const hadView = !!currentView;
     closeViews(); setHash(t==='home'?'':t);
     const target = t==='home' ? null : t;
@@ -1363,7 +1619,7 @@ function routeFromHash(){
   const h = location.hash.replace('#','');
   if (h==='contact') openContact();
   else if (/^project[1-4]$/.test(h)) openProject(h.slice(7));
-  else if (h==='work' || h==='about' || h==='selected') setTimeout(()=>scrollToEl(h),300);
+  else if (/^(work|about|selected|archive|insta)$/.test(h)){ if (h==='archive') setArc(true); setTimeout(()=>scrollToEl(h),300); }
 }
 addEventListener('hashchange', routeFromHash);
 </script>
