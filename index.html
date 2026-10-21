@@ -571,7 +571,7 @@ body.view-open .dock-links a.on{background:none}
   .make-grid{grid-template-columns:1fr}
   .c-grid{grid-template-columns:1fr}
   .c-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
-  .c-side .eyebrow,.c-side h3{grid-column:1/-1}
+  .c-side h3{grid-column:1/-1}
   .c-btns{grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,220px));max-width:none}
   .p-over,.p-two{grid-template-columns:1fr}
   .out-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -594,7 +594,6 @@ body.view-open .dock-links a.on{background:none}
   .mq{-webkit-mask-image:none;mask-image:none}
   .arc-bar{flex-wrap:wrap;row-gap:8px}
   .arc-bar .win-dots{display:none}
-  .arc-count{order:3;width:100%}
   .arc-toggle{padding:8px 10px 8px 14px}
   .arow{grid-template-columns:88px minmax(0,1fr) 16px;grid-template-areas:"thumb title go" "thumb desc go";gap:4px 14px;padding:12px 6px}
   .a-date{display:none}
@@ -742,7 +741,7 @@ body.view-open .dock-links a.on{background:none}
             <div class="scr-sub">Brand · Visual · Web</div>
             <a href="#contact" class="scr-btn" data-go="contact" data-cursor="SAY HI">Let's talk ↗</a>
           </div>
-          <div class="scr-foot">FILE&nbsp;&nbsp;/&nbsp;&nbsp;ABOUT ME</div>
+          <div class="scr-foot">BRAND · VISUAL · MOTION · WEB</div>
           <svg class="scr-cursor" viewBox="0 0 40 46" aria-hidden="true"><path d="M3 3 L3 37 L12.5 28.5 L19.5 43 L26.5 39.8 L19.8 25.6 L32.5 25 Z" fill="#1CDDFF" stroke="#182329" stroke-width="3" stroke-linejoin="round"/></svg>
         </div>
       </div>
@@ -882,7 +881,6 @@ body.view-open .dock-links a.on{background:none}
           <button class="arc-bar" id="arcBar" type="button" aria-expanded="false" aria-controls="arcBody" data-cursor="OPEN">
             <span class="win-dots" aria-hidden="true"><i></i><i></i><i></i></span>
             <span class="arc-title">ALL WORKS</span>
-            <span class="arc-count"><b id="arcCount">96</b> WORKS</span>
             <span class="arc-toggle"><span class="arc-tlabel">전체 보기</span><span class="arc-icon" aria-hidden="true"></span></span>
           </button>
           <div class="arc-body" id="arcBody" aria-hidden="true" inert>
@@ -1000,15 +998,8 @@ body.view-open .dock-links a.on{background:none}
           </div>
         </div>
         <aside class="c-side">
-          <div class="eyebrow">02 / Find me here</div>
           <h3>SAY HELLO.</h3>
           <div class="c-block"><h4>EMAIL</h4><span class="addr" data-email-text></span></div>
-          <div class="c-block"><h4>SOCIAL</h4>
-            <a data-link="ig1" target="_blank" rel="noopener">Instagram @mywooniverse._ ↗</a>
-            <a data-link="ig2" target="_blank" rel="noopener">Instagram @neromocha.zip ↗</a>
-            <a data-link="linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
-            <a data-link="youtube" target="_blank" rel="noopener">YouTube ↗</a>
-          </div>
           <div class="c-btns">
             <a class="pill pill-line" data-link="resume" target="_blank" rel="noopener">Résumé ↗</a>
             <button class="pill pill-line" data-go="work">Back to Works</button>
@@ -1360,7 +1351,6 @@ const ARC_EXTRA={9:['stage'],11:['stage'],12:['stage'],13:['stage'],24:['stage']
 const arcTags=w=>{const t=[w[1],...(ARC_EXTRA[w[8]]||[])];return ['ai','brand','stage'].filter(k=>t.includes(k));};
 const arcEsc=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const arc=$('#arcWin'), arcBar=$('#arcBar'), arcBody=$('#arcBody'), arcRows=$('#arcRows'), arcTabs=$('#arcTabs');
-$('#arcCount').textContent=WORKS.length;
 let arcRendered=false;
 function arcRender(c){
   arcRows.innerHTML=WORKS.filter(w=>c==='all'||arcTags(w).includes(c)).map(w=>{
